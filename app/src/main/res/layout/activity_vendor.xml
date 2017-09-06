@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_vendor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Vendor.Color"
+    android:focusableInTouchMode="false"
+    android:fitsSystemWindows="true"
+    tools:context="com.icdatofcusgmail.lucidsnacks.VendorActivityArchive.VendorActivity">
+
+    <include
+        android:id="@+id/ToolbarVendorActivity"
+        layout="@layout/toolbar_vendoractivity"
+        android:layout_height="65dp"
+        android:layout_width="match_parent">
+    </include>
+
+    <TextView
+        android:text="Items"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemsState"
+        android:layout_below="@+id/ToolbarVendorActivity"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp"
+        android:layout_alignParentEnd="true" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/displayAddorRemoveLayout"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/itemsState">
+        <TextView
+            android:text="@string/selecteditemsv19_V_Activity"
+            android:textSize="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemsBeenSelected" />
+    </HorizontalScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/display_items"
+        android:background="@drawable/va_round_buttonedge"
+        android:textColor="@color/AddOrRemoveButtonTextColor"
+        android:textSize="20sp"
+        android:onClick="OCAddorRemove"
+        android:id="@+id/displayAddorRemoveDialogue"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_buttonedge"
+        android:text="@string/goto_login"
+        android:textColor="@color/DoneButtonTextColor"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:onClick="GetMeNextActivity"
+        android:id="@+id/getMeNextActivity"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_alignBaseline="@+id/displayAddorRemoveDialogue"
+        android:layout_alignBottom="@+id/displayAddorRemoveDialogue"
+        android:layout_alignParentEnd="true"
+        tools:ignore="RelativeOverlap" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a_platecount"
+        android:onClick="OCDynamicPlateCount"
+        android:id="@+id/OCdynamicPlateCount"
+        android:background="@drawable/oval_dynamicplatecount"
+        android:layout_alignBottom="@+id/displayAddorRemoveDialogue"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/dynamicplatecount" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All"
+        android:id="@+id/checkboxAll"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_alignBottom="@+id/ToolbarVendorActivity"
+        android:theme="@style/VendorActivityCheckBox"/>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="900dp"
+        android:name="com.icdatofcusgmail.lucidsnacks.VendorActivityArchive.VendorFragment"
+        android:id="@+id/displayAddorRemoveLayout"
+        android:layout="@layout/fragment_vendor"
+        tools:layout="@layout/fragment_vendor"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectedYet"
+        android:text=""
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:layout_alignBaseline="@+id/checkboxAll"
+        android:layout_alignBottom="@+id/checkboxAll"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="38dp" />
+
+</RelativeLayout>

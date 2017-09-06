@@ -1,0 +1,715 @@
+<resources>
+    <string name="app_name">LucidSnacks</string>
+
+    <string name="display_items">ITEMS</string>
+    <string name="goto_login">DONE</string>
+    <string name="done">SendData</string>
+    <string name="cancel">Cancel</string>
+    <string name="okay">Okay</string>
+    <string name="WelcomeSweet">Welcome</string>
+    <string name="name">SAModel</string>
+    <string name="hello_amazing">Hello Amazing</string>
+    <string name="icdat_christ">icdat.christ</string>
+    <string name="pin_4_digits">pin (4 digits)</string>
+    <string name="access">Access</string>
+    <string name="not_entered">Not Entered</string>
+    <string name="not_entered2">Not Entered</string>
+    <string name="parseVendorId">ParseVendor</string>
+    <string name="clearalll">ClearAll</string>
+    <string name="clearallv21">ClearAllv21</string>
+    <string name="clearalllv21">ClearAllv21</string>
+    <string name="dynamicplatecount">DynamicPlateCount</string>
+    <string name="please_serve_the_recipient__ServingActivity">Please Serve the Recipient</string>
+    <string name="buttonserved_ServingActivity">SERVED</string>
+    <string name="please_serve_the_recipient_v21_ServingActivity">Please Serve the Recipient</string>
+    <string name="buttonservedv21_ServingActivity">SERVED</string>
+    <string name="Checkbox_buy_in_plate_snackActivity"> Buying in Plate(s)</string>
+    <string name="ButtonHintSelect_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelect2_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelect3_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelect4_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelect5_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelect6_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelectv23_snackPrice_snackActivity">select</string>
+    <string name="ButtonHintSelectv23_snackPrice_snackActivity2">select</string>
+    <string name="ButtonHintSelectv23_snackPrice_snackActivity_3">select</string>
+    <string name="ButtonHintSelectv23_snackPrice_snackActivity_4">select</string>
+    <string name="ButtonHintSelectv23_snackPrice_snackActivity_5">select</string>
+    <string name="istchosendeletebuttoncontent1">IstchosendeletebuttonCONTENT</string>
+    <string name="secondchosendeletebuttoncontent2">SecondchosendeletebuttonCONTENT</string>
+    <string name="thirdchosendeletebuttoncontent3">ThirdchosendeletebuttonCONTENT</string>
+    <string name="fourthchosendeletebutton4">Fourthchosendeletebutton</string>
+    <string name="fifthchosendeletebuttoncontent5">FifthchosendeletebuttonCONTENT</string>
+    <string name="sixthchosendeletebuttoncontent6">SixthchosendeletebuttonCONTENT</string>
+    <string name="seventhch_osendeletebuttoncontent7">SeventhchosendeletebuttonCONTENT</string>
+    <string name="eightchosendeletebuttoncontent8">EightchosendeletebuttonCONTENT</string>
+    <string name="ninthchosendeleltebuttoncontent9">NinthchosendeleltebuttonCONTENT</string>
+    <string name="tenthchosendeletebuttoncontent10">TenthchosendeletebuttonCONTENT</string>
+    <string name="istchosendeletebuttoncontentv21_1">IstchosendeletebuttonCONTENT</string>
+    <string name="secondchosendeletebuttoncontentv21_2">SecondchosendeletebuttonCONTENT</string>
+    <string name="thirdchosendeletebuttoncontentv21_3">ThirdchosendeletebuttonCONTENT</string>
+    <string name="fourthchosendeletebuttoncontentv21_4">FourthchosendeletebuttonCONTENT</string>
+    <string name="fifthchosendeletebuttoncontentv21_5">FifthchosendeletebuttonCONTENT</string>
+    <string name="sixthchosendeletebuttoncontentv21_6">SixthchosendeletebuttonCONTENT</string>
+    <string name="seventhchosendeletebuttoncontentv21_7">SeventhchosendeletebuttonCONTENT</string>
+    <string name="eightchosendeletebuttoncontentv21_8">EightchosendeletebuttonCONTENT</string>
+    <string name="ninthchosendeleltebuttoncontentv21_9">NinthchosendeleltebuttonCONTENT</string>
+    <string name="tenthchosendeletebuttoncontentv21_10">TenthchosendeletebuttonCONTENT</string>
+    <string name="purchasebutton_snackmenuFragment4_snackmenuActivity">Purchase</string>
+    <string name="plate_count_snackmenuFragment4_snackmenuActivityv21">Plate Count</string>
+    <string name="plate_count_snackmenuFragment4_snackmenuActvity">Plate Count</string>
+    <string name="calc_space_Counter_snackmenuFragment5_snackmenuActivityv21">Calc. Space</string>
+    <string name="calc_space_Counter_snackmenuFragment5_snackmenuActivity">Calc. Space</string>
+    <string name="one_plate_only_Dynamic_Platecount__VendorActivity_1">One Plate Only</string>
+    <string name="two_plates_only_Dynamic_Platecount__VendorActivity_2">Two Plates</string>
+    <string name="three_plates_only_Dynamic_Platecount__VendorActivity_3">Three Plates</string>
+    <string name="four_plates_only_Dynamic_Platecount__VendorActivity_4">Four Plates</string>
+    <string name="five_plates_only_Dynamic_Platecount__VendorActivity_5">Five Plates</string>
+    <string name="six_plates_only_Dynamic_Platecount__VendorActivity_6">Six Plates</string>
+    <string name="seven_plates_only_Dynamic_Platecount__VendorActivity_7">Seven Plates</string>
+    <string name="eight_plates_only_Dynamic_Platecount__VendorActivity_8">Eight Plates</string>
+    <string name="nine_plates_only_Dynamic_Platecount__VendorActivity_9">Nine Plates</string>
+    <string name="ten_plates_only_Dynamic_Platecount__VendorActivity_10">Ten Plates</string>
+    <string name="eleven_plates_only_Dynamic_Platecount__VendorActivity_11">Eleven Plates</string>
+    <string name="twelve_plates_only_Dynamic_Platecount__VendorActivity_12">Twelve Plates</string>
+    <string name="thirteen_plates_only_Dynamic_Platecount__VendorActivity_13">Thirteen Plates</string>
+    <string name="fourteen_plates_only_Dynamic_Platecount__VendorActivity_14">Fourteen Plates</string>
+    <string name="fifteen_plates_only_Dynamic_Platecount__VendorActivity_15">Fifteen Plates</string>
+    <string name="sixteen_plates_only_Dynamic_Platecount__VendorActivity_16">Sixteen Plates</string>
+    <string name="seventeen_plates_only_Dynamic_Platecount__VendorActivity_17">Seventeen Plates</string>
+    <string name="eighteen_plates_only_Dynamic_Platecount__VendorActivity_18">Eighteen Plates</string>
+    <string name="nineteen_plates_only_Dynamic_Platecount__VendorActivity_19">Nineteen Plates</string>
+    <string name="twenty_plates_only_Dynamic_Platecount__VendorActivity_20">Twenty Plates</string>
+    <string name="twentyone_plates_only_Dynamic_Platecount__VendorActivity_21">Twentyone Plates</string>
+    <string name="twentytwo_plates_only_Dynamic_Platecount__VendorActivity_22">Twentytwo Plates</string>
+    <string name="twentythree_plates_only_Dynamic_Platecount__VendorActivity_23">Twentythree Plates</string>
+    <string name="twentyfour_plates_only_Dynamic_Platecount__VendorActivity_24">Twentyfour Plates</string>
+    <string name="twentyfive_plates_only_Dynamic_Platecount__VendorActivity_25">Twentyfive Plates</string>
+    <string name="twentysix_plates_only_Dynamic_Platecount__VendorActivity_26">Twentysix Plates</string>
+    <string name="twentyseven_plates_only_Dynamic_Platecount__VendorActivity_27">Twentyseven Plates</string>
+    <string name="twentyeight_plates_only_Dynamic_Platecount__VendorActivity_28">Twentyeight Plates</string>
+    <string name="twentynine_plates_only_Dynamic_Platecount__VendorActivity_29">Twentynine Plates</string>
+    <string name="thirty_plates_only_Dynamic_Platecount__VendorActivity_30">Thirty Plates</string>
+    <string name="TextViewname_Gridview_VendorActivity">Name</string>
+    <string name="TextViewname_Gridviewv21_VendorActivity">Name</string>
+    <string name="plate_saved_snackmenuActivity_Toolbar">like present plate</string>
+    <string name="saved_plate_selected_snackmenuActivity_Toolbar">Saved Plate History</string>
+    <string name="check_balance_snackmenuActivity_Toolbar">Check Balance</string>
+    <string name="system_settings">Settings</string>
+    <string name="lost_interest_at_this_point">Log Out</string>
+    <string name="snackmenuActivityFirstToolbarlucidsnackname">Lucidsnacks</string>
+    <string name="snackmenuActivitySecondToolbarwelcome_usernamehere">Welcome, Admin</string>
+    <string name="snackmenuActivityToolbarOneAppnameLessthan">Lucidsnack</string>
+    <string name="snackmenuActivityToolbarTwoWelcome_UsernameLessthan">Welcome, Admin</string>
+    <string name="Content_Description_AnimatedImages">AnimatedImages</string>
+    <string name="Content_Description_AnimatedImages_Lessthan">AnimatedImages_Lessthan</string>
+    <string name="AddorRemoveButton">Items</string>
+    <string name="CheckedItemsInTextView">selectedItems</string>
+    <string name="CheckAllorRemoveAll">All</string>
+    <string name="selecteditemsv19_V_Activity">selectedItems</string>
+    <string name="vendor_idnumber">01</string>
+    <string name="id_s_name_will_display_here_Vendor_Login_Activity">id\'s name will display here</string>
+    <string name="id_no_display_Vendor_Activity">Id No</string>
+    <string name="log_out_Vendor_Login_Activity">Log Out</string>
+    <string name="shut_down_lucid">Shut Down</string>
+    <string name="confirmID">Id N</string>
+    <string name="clearall">Clear All</string>
+
+    <string-array name="AorR">
+
+        <item>Update Items</item>
+
+    </string-array>
+
+
+    <string-array name="DefaultPlatenumber">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+    </string-array>
+
+    <string-array name="OnePlatenumber">
+        <item>One Plate</item>
+    </string-array>
+
+
+    <string-array name="TwoPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+    </string-array>
+
+
+    <string-array name="ThreePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+    </string-array>
+
+    <string-array name="FourPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+    </string-array>
+
+
+    <string-array name="FivePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+    </string-array>
+
+
+    <string-array name="SixPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+    </string-array>
+
+
+    <string-array name="SevenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+    </string-array>
+
+
+    <string-array name="EightPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+    </string-array>
+
+
+    <string-array name="NinePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+    </string-array>
+
+
+    <string-array name="TenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+    </string-array>
+
+
+    <string-array name="ElevenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+    </string-array>
+
+
+    <string-array name="TwelvePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+    </string-array>
+
+
+    <string-array name="ThirteenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+    </string-array>
+
+
+    <string-array name="FourteenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+    </string-array>
+
+    <string-array name="FifteenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+    </string-array>
+
+
+    <string-array name="SixteenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+    </string-array>
+
+    <string-array name="SeventeenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+    </string-array>
+
+
+    <string-array name="EighteenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+    </string-array>
+
+    <string-array name="NineteenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+    </string-array>
+
+    <string-array name="TwentyPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+    </string-array>
+
+    <string-array name="TwentyOnePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+    </string-array>
+
+    <string-array name="TwentyTwoPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+    </string-array>
+
+    <string-array name="TwentyThreePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+    </string-array>
+
+    <string-array name="TwentyFourPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+    </string-array>
+
+
+    <string-array name="TwentyFivePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+        <item>TwentyFive Plates</item>
+    </string-array>
+
+    <string-array name="TwentySixPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+        <item>TwentyFive Plates</item>
+        <item>TwentySix Plates</item>
+    </string-array>
+
+    <string-array name="TwentySevenPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+        <item>TwentyFive Plates</item>
+        <item>TwentySix Plates</item>
+        <item>TwentySeven Plates</item>
+    </string-array>
+
+
+    <string-array name="TwentyEightPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+        <item>TwentyFive Plates</item>
+        <item>TwentySix Plates</item>
+        <item>TwentySeven Plates</item>
+        <item>TwentyEight Plates</item>
+    </string-array>
+
+
+    <string-array name="TwentyNinePlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+        <item>TwentyFive Plates</item>
+        <item>TwentySix Plates</item>
+        <item>TwentySeven Plates</item>
+        <item>TwentyEight Plates</item>
+        <item>TwentyNine Plates</item>
+    </string-array>
+
+
+    <string-array name="ThirtyPlatenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+        <item>Six Plates</item>
+        <item>Seven Plates</item>
+        <item>Eight Plates</item>
+        <item>Nine Plates</item>
+        <item>Ten Plates</item>
+        <item>Eleven Plates</item>
+        <item>Twelve Plates</item>
+        <item>Thirteen Plates</item>
+        <item>Fourteen Plates</item>
+        <item>Fifteen Plates</item>
+        <item>Sixteen Plates</item>
+        <item>Seventeen Plates</item>
+        <item>Eighteen Plates</item>
+        <item>Nineteen Plates</item>
+        <item>Twenty Plates</item>
+        <item>TwentyOne Plates</item>
+        <item>TwentyTwo Plates</item>
+        <item>TwentyThree Plates</item>
+        <item>TwentyFour Plates</item>
+        <item>TwentyFive Plates</item>
+        <item>TwentySix Plates</item>
+        <item>TwentySeven Plates</item>
+        <item>TwentyEight Plates</item>
+        <item>TwentyNine Plates</item>
+        <item>Thirty Plates</item>
+    </string-array>
+
+    <string-array name="platenumbers">
+        <item>One Plate</item>
+        <item>Two Plates</item>
+        <item>Three Plates</item>
+        <item>Four Plates</item>
+        <item>Five Plates</item>
+    </string-array>
+
+    <array name="currency_array">
+        <item>Naira (₦)</item>
+    </array>
+
+</resources>

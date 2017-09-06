@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#2ab652"
+    android:elevation="10dp">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/Istpricebutton"
+        android:textSize="20sp"
+        android:layout_marginTop="39dp"
+        android:hint="@string/ButtonHintSelect_snackPrice_snackActivity"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:clickable="false"
+        android:background="@drawable/sa_snackprice_buttons_circleside"
+        android:layout_alignParentTop="true"
+        android:fontFamily="14pt"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="40dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/Secondpricebutton"
+        android:textSize="20sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/sa_snackprice_buttons_circleside"
+        android:layout_alignTop="@+id/Istpricebutton"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="14pt"
+        android:hint="@string/ButtonHintSelect2_snackPrice_snackActivity"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/Thirdpricebutton"
+        android:background="@drawable/sa_snackprice_buttons_circleside"
+        android:layout_marginTop="82dp"
+        android:fontFamily="14pt"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        android:hint="@string/ButtonHintSelect3_snackPrice_snackActivity"
+        android:layout_below="@+id/Istpricebutton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="40dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/Fourthpricebutton"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        android:background="@drawable/sa_snackprice_buttons_circleside"
+        android:fontFamily="14pt"
+        android:hint="@string/ButtonHintSelect4_snackPrice_snackActivity"
+        android:layout_above="@+id/Fifthpricebutton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/Thirdpricebutton"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="40dp"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/Fifthpricebutton"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        android:background="@drawable/sa_snackprice_buttons_circleside"
+        android:layout_marginTop="91dp"
+        android:fontFamily="14pt"
+        android:hint="@string/ButtonHintSelect5_snackPrice_snackActivity"
+        android:layout_below="@+id/Thirdpricebutton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="40dp"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/Sixthpricebutton"
+        android:textSize="20sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/sa_snackprice_buttons_circleside"
+        android:hint="@string/ButtonHintSelect6_snackPrice_snackActivity"
+        android:fontFamily="14pt"
+        android:layout_alignTop="@+id/Fifthpricebutton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="40dp"/>
+
+</RelativeLayout>

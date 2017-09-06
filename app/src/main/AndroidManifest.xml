@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.icdatofcusgmail.lucidsnacks">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name=".LucidApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+
+        <activity
+            android:name=".Vendors_LoginActivityArchive.Vendor_LoginActivity"
+            android:theme="@style/Vendor_LoginActivity"
+            android:screenOrientation="reversePortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VendorActivityArchive.VendorActivity"
+            android:alwaysRetainTaskState="true"
+            android:clearTaskOnLaunch="false"
+            android:multiprocess="true"
+            android:screenOrientation="reversePortrait"
+            android:theme="@style/VendorActivity">
+        </activity>
+        <activity
+            android:name=".LoginActivityArchive.LoginActivity"
+            android:theme="@style/LoginActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SnacksActivityArchive.SnacksmenuActivity"
+            android:theme="@style/SnacksmenuActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ServingActivityArchive.ServingActivity"
+            android:screenOrientation="reversePortrait"
+            android:theme="@style/ServingActivity" />
+
+    </application>
+
+</manifest>
