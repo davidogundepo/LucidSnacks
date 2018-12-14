@@ -1,67 +1,450 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#81D4FA"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/ServingBackground"
     tools:context="com.icdatofcusgmail.lucidsnacks.ServingActivityArchive.ServingActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/servingLinearLayoutOne"
-        android:paddingBottom="50dp"
-        android:layout_margin="10dp">
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/CardColor"
+        android:id="@+id/servingCardView">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/please_serve_the_recipient_v21_ServingActivity"
-            android:textSize="25sp"
-            android:id="@+id/serveMePlease"
-            android:layout_gravity="center" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:id="@+id/servingLinearLayoutOne"
+            android:layout_margin="10dp"
+            android:padding="50dp"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/please_serve_the_recipient_v21_ServingActivity"
+                android:textColor="@color/CardTextColor"
+                android:textSize="25sp"
+                android:id="@+id/serveMePlease"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 
-    <LinearLayout
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
+        android:layout_height="1400dp"
+        android:layout_below="@id/servingCardView"
+        android:id="@+id/servethisTableScroll"
+        android:background="@color/ServingBackground"
         android:paddingBottom="30dp"
-        android:id="@+id/servingLinearLayoutTwo"
-        android:layout_below="@+id/servingLinearLayoutOne">
+        android:paddingTop="30dp"
+        android:scrollbarThumbVertical="@drawable/sa_scrollbar_vertical_thumb"
+        android:scrollbarFadeDuration="1000"
+        android:smoothScrollbar="true">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/plate1"
-            android:text=""
-            android:gravity="center"
-            android:textSize="25sp"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
+            android:id="@+id/servethisTable">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/plate2"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"
-            android:textSize="25sp"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="30dp"
+                android:layout_margin="10dp"
+                android:id="@+id/servingLinearLayoutTwo"
+                android:paddingBottom="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/plate1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="@color/PlateTextColor"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/plate2"
+                    android:text=""
+                    android:textColor="@color/PlateTextColor"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:id="@+id/servingLinearLayoutThree"
+                android:layout_below="@+id/servingLinearLayoutTwo">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/plate3"
+                    android:text=""
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:textColor="@color/PlateTextColor"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/plate4"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/PlateTextColor"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:layout_below="@+id/servingLinearLayoutThree"
+                android:id="@+id/servingLinearLayoutFour">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:textColor="@color/PlateTextColor"
+                    android:id="@+id/plate5"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"
+                    android:textSize="25sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:textColor="@color/PlateTextColor"
+                    android:id="@+id/plate6"
+                    android:textSize="25sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:layout_below="@+id/servingLinearLayoutFour"
+                android:id="@+id/servingLinearLayoutFive">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/PlateTextColor"
+                    android:gravity="center"
+                    android:id="@+id/plate7"
+                    android:textSize="25sp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:textColor="@color/PlateTextColor"
+                    android:id="@+id/plate8"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:gravity="center"
+                android:layout_below="@+id/servingLinearLayoutFive"
+                android:id="@+id/servingLinearLayoutSix">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:textColor="@color/PlateTextColor"
+                    android:id="@+id/plate9"
+                    android:textSize="25sp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/PlateTextColor"
+                    android:id="@+id/plate10"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/sa_plate_textview_activity"/>
+            </LinearLayout>
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingTop="30dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:id="@+id/servingLinearLayoutSeven"-->
+            <!--android:layout_below="@id/servingLinearLayoutSix"-->
+            <!--android:paddingBottom="30dp">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/plate11"-->
+            <!--android:text=""-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="25sp"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/plate12"-->
+            <!--android:text=""-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"-->
+            <!--android:textSize="25sp"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:paddingBottom="30dp"-->
+            <!--android:paddingTop="30dp"-->
+            <!--android:id="@+id/servingLinearLayoutEight"-->
+            <!--android:layout_below="@+id/servingLinearLayoutSeven">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/plate13"-->
+            <!--android:text=""-->
+            <!--android:textSize="25sp"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:id="@+id/plate14"-->
+            <!--android:textSize="25sp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:paddingBottom="30dp"-->
+            <!--android:paddingTop="30dp"-->
+            <!--android:layout_below="@+id/servingLinearLayoutEight"-->
+            <!--android:id="@+id/servingLinearLayoutNine">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:id="@+id/plate15"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"-->
+            <!--android:textSize="25sp"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:id="@+id/plate16"-->
+            <!--android:textSize="25sp"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingBottom="30dp"-->
+            <!--android:paddingTop="30dp"-->
+            <!--android:layout_below="@+id/servingLinearLayoutNine"-->
+            <!--android:id="@+id/servingLinearLayoutTen">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:gravity="center"-->
+            <!--android:id="@+id/plate17"-->
+            <!--android:textSize="25sp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:id="@+id/plate18"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"-->
+            <!--android:textSize="25sp"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:paddingBottom="30dp"-->
+            <!--android:paddingTop="30dp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_below="@+id/servingLinearLayoutTen"-->
+            <!--android:id="@+id/servingLinearLayoutEleven">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:id="@+id/plate19"-->
+            <!--android:textSize="25sp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:textColor="@color/PlateTextColor"-->
+            <!--android:id="@+id/plate20"-->
+            <!--android:textSize="25sp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:background="@drawable/sa_plate_textview_activity"/>-->
+            <!--</LinearLayout>-->
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 
     <LinearLayout
@@ -69,174 +452,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:paddingBottom="30dp"
-        android:id="@+id/servingLinearLayoutThree"
-        android:layout_below="@+id/servingLinearLayoutTwo">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/plate3"
-            android:text=""
-            android:textSize="25sp"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/plate4"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_marginStart="10dp"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:paddingBottom="30dp"
-        android:layout_below="@+id/servingLinearLayoutThree"
-        android:id="@+id/servingLinearLayoutFour">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:id="@+id/plate5"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"
-            android:textSize="25sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:id="@+id/plate6"
-            android:textSize="25sp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
+        android:paddingBottom="40dp"
+        android:paddingTop="40dp"
         android:gravity="center"
-        android:paddingBottom="30dp"
-        android:layout_below="@+id/servingLinearLayoutFour"
-        android:id="@+id/servingLinearLayoutFive">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:id="@+id/plate7"
-            android:textSize="25sp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:id="@+id/plate8"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"
-            android:textSize="25sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:paddingBottom="30dp"
-        android:layout_below="@+id/servingLinearLayoutFive"
-        android:id="@+id/servingLinearLayoutSix">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:id="@+id/plate9"
-            android:textSize="25sp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:id="@+id/plate10"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:paddingBottom="30dp"
-        android:gravity="center"
-        android:layout_below="@+id/servingLinearLayoutSix"
-        android:id="@+id/servingLinearLayoutSeven">
+        android:layout_below="@+id/servethisTableScroll"
+        android:id="@+id/servingLinearLayoutTwelve">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="#4DB6AC"
+            android:textColor="@color/PlatePackTextColor"
             android:id="@+id/PackorPlate"
             android:textSize="25sp"
             android:gravity="center"
             android:layout_weight="1"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:background="@drawable/sa_plate_textview_activity"/>
+            android:background="@drawable/sa_pack_plate_background_style"/>
     </LinearLayout>
 
 
@@ -244,9 +476,11 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:text="@string/buttonservedv21_ServingActivity"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="NextTransactionPlease"
         android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>

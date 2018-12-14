@@ -38,7 +38,7 @@ public class SnacksavailableFragment extends Fragment implements AdapterView.OnI
 
         MainApp = LucidApplication.getInstance();
         moe = (MissPublicRelation) getActivity();
-        listView = (ListView) getActivity().findViewById(R.id.listView);
+        listView = getActivity().findViewById(R.id.listView);
 
         for( int i = 0; i < MainApp.selectedsnacks.size(); i++ ) {
             Icdat d = (Icdat) MainApp.selectedsnacks.get(i);

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/name"
+        android:textColor="@color/colorNursery"
         android:id="@+id/textmodel2"
         android:layout_below="@+id/imagemodel2"
         android:layout_alignWithParentIfMissing="true"
@@ -28,10 +29,10 @@
         android:paddingBottom="10dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        app:civ_border_color="#ffffff"
-        app:civ_border_width="2dp"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        app:civ_border_color="@color/colorNursery"
+        app:civ_border_width="4dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/imagemodel2"
         android:src="@mipmap/ic_launcher"
         android:translationZ="20dp"

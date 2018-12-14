@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/Meat_Pie">
+        <item android:id="@+id/five_meat_pie" android:title="600 NAIRA MEATPIE(5)"/>
+        <item android:id="@+id/six_meat_pie" android:title="720 NAIRA MEATPIE(6)"/>
+        <item android:id="@+id/seven_meat_pie" android:title="840 NAIRA MEATPIE(7)"/>
+        <item android:id="@+id/eight_meat_pie" android:title="960 NAIRA MEATPIE(8)"/>
+        <item android:id="@+id/nine_meat_pie" android:title="1080 NAIRA MEATPIE(9)"/>
+        <item android:id="@+id/ten_meat_pie" android:title="1200 NAIRA MEATPIE(10)"/>
+        <item android:id="@+id/eleven_meat_pie" android:title="1320 NAIRA MEATPIE(11)"/>
+        <item android:id="@+id/twelve_meat_pie" android:title="1440 NAIRA MEATPIE(12)"/>
+        <item android:id="@+id/thirteen_meat_pie" android:title="1560 NAIRA MEATPIE(13)"/>
+        <item android:id="@+id/fourteen_meat_pie" android:title="1680 NAIRA MEATPIE(14)"/>
+        <item android:id="@+id/fifteen_meat_pie" android:title="1800 NAIRA MEATPIE(15)"/>
+        <item android:id="@+id/sixteen_meat_pie" android:title="1920 NAIRA MEATPIE(16)"/>
+        <item android:id="@+id/seventeen_meat_pie" android:title="2040 NAIRA MEATPIE(17)"/>
+        <item android:id="@+id/eighteen_meat_pie" android:title="2160 NAIRA MEATPIE(18)"/>
+        <item android:id="@+id/nineteen_meat_pie" android:title="2280 NAIRA MEATPIE(19)"/>
+        <item android:id="@+id/twenty_meat_pie" android:title="2400 NAIRA MEATPIE(20)"/>
+    </group>
+
+</menu>

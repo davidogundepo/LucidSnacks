@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/Egg_roll">
+        <item android:id="@+id/five_egg_roll" android:title="400 NAIRA EGG ROLL(5)"/>
+        <item android:id="@+id/six_egg_roll" android:title="480 NAIRA EGG ROLL(6)"/>
+        <item android:id="@+id/seven_egg_roll" android:title="560 NAIRA EGG ROLL(7)"/>
+        <item android:id="@+id/eight_egg_roll" android:title="640 NAIRA EGG ROLL(8)"/>
+        <item android:id="@+id/nine_egg_roll" android:title="720 NAIRA EGG ROLL(9)"/>
+        <item android:id="@+id/ten_egg_roll" android:title="800 NAIRA EGG ROLL(10)"/>
+        <item android:id="@+id/eleven_egg_roll" android:title="880 NAIRA EGG ROLL(11)"/>
+        <item android:id="@+id/twelve_egg_roll" android:title="960 NAIRA EGG ROLL(12)"/>
+        <item android:id="@+id/thirteen_egg_roll" android:title="1040 NAIRA EGG ROLL(13)"/>
+        <item android:id="@+id/fourteen_egg_roll" android:title="1120 NAIRA EGG ROLL(14)"/>
+        <item android:id="@+id/fifteen_egg_roll" android:title="1200 NAIRA EGG ROLL(15)"/>
+        <item android:id="@+id/sixteen_egg_roll" android:title="1280 NAIRA EGG ROLL(16)"/>
+        <item android:id="@+id/seventeen_egg_roll" android:title="1360 NAIRA EGG ROLL(17)"/>
+        <item android:id="@+id/eighteen_egg_roll" android:title="1340 NAIRA EGG ROLL(18)"/>
+        <item android:id="@+id/nineteen_egg_roll" android:title="1520 NAIRA EGG ROLL(19)"/>
+        <item android:id="@+id/twenty_egg_roll" android:title="1600 NAIRA EGG ROLL(20)"/>
+    </group>
+
+</menu>

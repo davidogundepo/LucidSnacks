@@ -14,10 +14,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +43,7 @@ import com.icdatofcusgmail.lucidsnacks.LucidApplication;
 import com.icdatofcusgmail.lucidsnacks.MyCountlesston;
 import com.icdatofcusgmail.lucidsnacks.R;
 import com.icdatofcusgmail.lucidsnacks.ServingActivityArchive.ServingActivity;
+import com.luolc.emojirain.EmojiRainLayout;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.squareup.picasso.Picasso;
 
@@ -51,6 +54,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,8 +67,11 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
     Button button, button2, button3, button4, button5, button6;
     static Button Pcount, Purchase;
     ListView ShowForThis;
-    TextView WelcomeSweet, fullUsername, Lucid;
+    TextView WelcomeSweet, fullUsername, Lucid, EmailAddress;
     TextView NoOfPlates;
+    TextView Sex, UserProfileName, UserProfileAccountBalance, UserProfileStarLevel, Department, Level, LastSeen, UserProfileSex;
+    ImageView UserProfileImage;
+    TextView HiICalculate;
     private ImageView AnimatedImageView;
     CircleImageView circleImageView;
     public static int out = 0;
@@ -101,11 +108,30 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
     String stringplaytxxix = "Buying all in twonine plates";
     String stringplaytxxx = "Buying all in twoten plates";
 
+    String SnackAOneBeta, SnackAOne, SnackATwo, NoOfSnackA;
+    String SnackBOneBeta, SnackBOne, SnackBTwo, NoOfSnackB;
+    String SnackCOneBeta, SnackCOne, SnackCTwo, NoOfSnackC;
+    String SnackDOneBeta, SnackDOne, SnackDTwo, NoOfSnackD;
+    String SnackEOneBeta, SnackEOne, SnackETwo, NoOfSnackE;
+    String SnackFOneBeta, SnackFOne, SnackFTwo, NoOfSnackF;
+    String SnackGOneBeta, SnackGOne, SnackGTwo, NoOfSnackG;
+    String SnackHOneBeta, SnackHOne, SnackHTwo, NoOfSnackH;
+    String SnackIOneBeta, SnackIOne, SnackITwo, NoOfSnackI;
+    String SnackJOneBeta, SnackJOne, SnackJTwo, NoOfSnackJ;
+
+
     LucidApplication app;
 
-    String update_url = "http://192.168.2.75/account_balance_difference.php";
-    String insert_url = "http://192.168.2.75/snacks_transaction_success.php";
+    String update_balance = "http://128.0.1.2/my_accountbalance_diff.php";
+    String insert_bought_snacksitems = "http://128.0.1.2/my_lucidsnacks_transaction_success.php";
+    String webmail_snackstranc_details = "http://128.0.1.2/my_lucidsnacks_webmail_transaction_details.php";
+
     AlertDialog.Builder Dweezy;
+
+    AlertDialog.Builder Lenient;
+    Dialog Adamu;
+
+    EmojiRainLayout faith;
 
 
     private enum OperationAnimation {
@@ -122,7 +148,7 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
         Dweezy = new AlertDialog.Builder(SnacksmenuActivity.this);
 
         playtcount = stringplayti;
-        ShowForThis = (ListView) findViewById(R.id.listView);
+        ShowForThis = findViewById(R.id.listView);
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "deprecatedmyfoot");
         wakeLock.acquire();
@@ -137,27 +163,31 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
         textView9th = (Button) findViewById(R.id.Ninthchosenbutton);
         textView10th = (Button) findViewById(R.id.Tenthchosenbutton);
 
-        NoOfPlates = (TextView) findViewById(R.id.CountMyPlate);
+        NoOfPlates = findViewById(R.id.CountMyPlate);
 
-        WelcomeSweet = (TextView) findViewById(R.id.UserWelcome);
-        fullUsername = (TextView) findViewById(R.id.fullUsername);
+        Sex = findViewById(R.id.sex);
+
+        WelcomeSweet = findViewById(R.id.UserWelcome);
+        fullUsername = findViewById(R.id.fullUsername);
+        EmailAddress = findViewById(R.id.emailAddress);
         Lucid = (RevealTextView) findViewById(R.id.AppName);
         Typeface blackface = Typeface.createFromAsset(getAssets(), "customfont/buttonfor.otf");
         Lucid.setTypeface(blackface);
 
-        button = (Button) findViewById(R.id.Istpricebutton);
-        button2 = (Button) findViewById(R.id.Secondpricebutton);
-        button3 = (Button) findViewById(R.id.Thirdpricebutton);
-        button4 = (Button) findViewById(R.id.Fourthpricebutton);
-        button5 = (Button) findViewById(R.id.Fifthpricebutton);
-        button6 = (Button) findViewById(R.id.Sixthpricebutton);
-        Pcount = (Button) findViewById(R.id.button);
+        button = findViewById(R.id.Istpricebutton);
+        button2 = findViewById(R.id.Secondpricebutton);
+        button3 = findViewById(R.id.Thirdpricebutton);
+        button4 = findViewById(R.id.Fourthpricebutton);
+        button5 = findViewById(R.id.Fifthpricebutton);
+      //  button6 = (Button) findViewById(R.id.Sixthpricebutton);
 
-        Purchase = (Button) findViewById(R.id.button20000);
+        Pcount = findViewById(R.id.button);
 
-        AnimatedImageView = (ImageView) findViewById(R.id.animatedImages);
+        Purchase = findViewById(R.id.button20000);
 
-        circleImageView = (CircleImageView) findViewById(R.id.ServerImage);
+        AnimatedImageView = findViewById(R.id.animatedImages);
+
+        circleImageView = findViewById(R.id.ServerImage);
         final Bundle bundle = getIntent().getExtras();
         getUserAppearance(bundle.getString("image"));
 
@@ -165,7 +195,7 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                 && !textView4th.isShown() && !textView5th.isShown() && !textView6th.isShown()
                 && !textView7th.isShown() && !textView8th.isShown() && !textView9th.isShown()
                 && !textView10th.isShown()) {
-            Pcount.setEnabled(false);
+            //Pcount.setEnabled(false);
             Purchase.setEnabled(false);
         }
 
@@ -183,15 +213,26 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
 
         }
 
+        Bundle ThirdParcel = getIntent().getExtras();
+        try {
+            EmailAddress.setText("" + ThirdParcel.getString("email") + "");
+        } catch (Exception ignored) {
+
+        }
+
+        HiICalculate = findViewById(R.id.counter);
+        HiICalculate.setText("Hey " + FirstParcel.getString("king") + "\nI Calculate");
+
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        relative = (RelativeLayout) findViewById(R.id.activity_snacksmenu);
+        relative = findViewById(R.id.activity_Snacksmenu);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
         }
-        toolbar_foodmenu = (Toolbar) findViewById(R.id.ToolbarsnacksmenuActivity);
+        toolbar_foodmenu = findViewById(R.id.ToolbarsnacksmenuActivity);
         setSupportActionBar(toolbar_foodmenu);
 
         try {
@@ -204,26 +245,133 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
 
 
     private void getUserAppearance(String url) {
-        Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_failed_userappearancesub).into(circleImageView, new com.squareup.picasso.Callback()  {
-            @Override
-            public void onSuccess() {
 
-            }
+        Bundle SexParcel = getIntent().getExtras();
+        Sex.setText(SexParcel.getString("sex"));
 
-            @Override
-            public void onError() {
+        if (Sex.getText().toString().equals("female")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorgirl).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
 
-            }
-        });
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("male")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorboy).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("doctor")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errordoctor).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("professor")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorprof).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("mr")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errormr).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("engineer")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorengr).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("mrs")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errormrs).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("miss")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errormiss).into(circleImageView, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
 
     }
 
     public void ConfirmMyPurchase(View v) {
 
+        Bundle FirstParcel = getIntent().getExtras();
+
         if (ChosenplateCounter.feetag.getCurrentTextColor() == Color.parseColor("#B71C1C")) {
             AlertDialog.Builder notExactly = new AlertDialog.Builder(SnacksmenuActivity.this);
-            notExactly.setMessage("You've kinda exceeded your Balance");
-            notExactly.setPositiveButton("I'm Sorry", new DialogInterface.OnClickListener() {
+            notExactly.setTitle("Ummmm....it seems you've kinda exceeded your accountbalance.");
+            notExactly.setMessage("\nIt's alright " + FirstParcel.getString("king") +  ", we could do away with few stuffs.");
+            notExactly.setPositiveButton("I'm Sorry Fam", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
@@ -232,8 +380,9 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
             notExactly.create().show();
         } else if (ChosenplateCounter.feetag.getCurrentTextColor() == Color.parseColor("#303F9F")) {
             AlertDialog.Builder notBeyond = new AlertDialog.Builder(SnacksmenuActivity.this);
-            notBeyond.setMessage("Ummmm....Your Purchase really can't be equal with your Balance");
-            notBeyond.setPositiveButton("I'm Sorry", new DialogInterface.OnClickListener() {
+            notBeyond.setTitle("Ummmm....Your Purchase really can't be equal with your Balance");
+            notBeyond.setMessage("\nLet's try do away with something aiit?");
+            notBeyond.setPositiveButton("Aiit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
@@ -242,17 +391,22 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
             notBeyond.create().show();
         } else {
             final AlertDialog.Builder builder = new AlertDialog.Builder(SnacksmenuActivity.this);
-            builder.setTitle("Confirm Purchase");
-            builder.setMessage("The item(s) you selected will be bought by clicking \n\n'SENDDATA'");
+
+            Bundle IRTBD = getIntent().getExtras();
+            builder.setTitle("Confirm Purchase " + IRTBD.getString("king") + "");
+
+            builder.setMessage("The snack(s) you selected will be bought by clicking \n\n'Buy'");
             builder.setCancelable(false);
 
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
-                    playtcount = stringplayti;
                     ChosenplateCounter.feetag.setText("" + Integer.toString(out) + "");
-                    SnacksmenuActivity.Pcount.setText("" + "PLATE COUNT" + "");
+                    playtcount = stringplayti;
+                    ChosenplateCounter.feetag.setText("" + app.allinsnackcounter + "");
+                  //  SnacksmenuActivity.Pcount.setText("" + "PLATE COUNT" + "");
+                    NoOfPlates.setText("1");
 
                     StyleableToast NotConfirmed = new StyleableToast(getApplicationContext(), "Transaction not Confirmed", Toast.LENGTH_SHORT).spinIcon();
                     NotConfirmed.setBackgroundColor(Color.parseColor("#FF5A5F"));
@@ -264,15 +418,33 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
-                    StringRequest fromJingSun = new StringRequest(Request.Method.POST, update_url,
+                    StringRequest fromJingSun = new StringRequest(Request.Method.POST, update_balance,
                             new Response.Listener<String>() {
                                 @Override
-                                public void onResponse(final String response) {
+                                public void onResponse(String response) {
                                     try {
                                         JSONArray jsonArray = new JSONArray(response);
                                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                                         String code = jsonObject.getString("code");
-                                        Dweezy.setMessage(code);
+
+                                        Bundle FirstParcel = getIntent().getExtras();
+
+                                        if (code.equals("Transaction Successful.")) {
+                                            Dweezy.setTitle(code);
+                                            Dweezy.setMessage("\nAlright " + FirstParcel.getString("king") + " let's get you served.");
+                                        }
+                                        if (code.equals("Ummmm....it seems you've kinda exceeded your accountbalance.")) {
+                                            Dweezy.setTitle(code);
+                                            Dweezy.setMessage("\nIt's alright " + FirstParcel.getString("king") + ", we could do away with few stuffs.");
+                                            builder.setPositiveButton("Okay", null);
+                                        }
+                                        if (code.equals("It's crazy " + FirstParcel.getString("king") + " but you are not permitted to put exactly all your money.")) {
+                                            Dweezy.setTitle(code);
+                                            Dweezy.setMessage("\nLet's try do away with something aiit?");
+                                            builder.setPositiveButton("Aiit", null);
+                                        }
+
+                                   //     Dweezy.setMessage(code);
                                         Dweezy.setCancelable(false);
                                         exhibitAnswer(code);
                                     } catch (JSONException e) {
@@ -289,7 +461,7 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> params = new HashMap<String, String>();
                             params.put("accountbalance_diff", ChosenplateCounter.feetag.getText().toString());
-                            params.put("user_name", fullUsername.getText().toString());
+                            params.put("email", EmailAddress.getText().toString());
                             return params;
                         }
                     };
@@ -297,6 +469,7 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                 }
 
             }).setIcon(R.drawable.a_announcement);
+
             Dialog dialog = builder.create();
             try {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
@@ -314,7 +487,7 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (code.equals("Transaction Successful"))
+                if (code.equals("Transaction Successful."))
                 {
                     StyleableToast TranCompleted = new StyleableToast(getApplicationContext(), "Transaction Verified", Toast.LENGTH_SHORT).spinIcon();
                     TranCompleted.setBackgroundColor(Color.parseColor("#FF5A5F"));
@@ -370,15 +543,121 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                     PrincessFiancee.putString("prince", WelcomeSweet.getText().toString().substring(8));
                     intent.putExtras(PrincessFiancee);
 
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, insert_url,
+                    if (textView.getVisibility() == View.VISIBLE) {
+                        stringRequestOne();
+                    }
+                    if (textView2nd.getVisibility() == View.VISIBLE) {
+                        stringRequestTwo();
+                    }
+                    if (textView3rd.getVisibility() == View.VISIBLE) {
+                        stringRequestThree();
+                    }
+                    if (textView4th.getVisibility() == View.VISIBLE) {
+                        stringRequestFour();
+                    }
+                    if (textView5th.getVisibility() == View.VISIBLE) {
+                        stringRequestFive();
+                    }
+                    if (textView6th.getVisibility() == View.VISIBLE) {
+                        stringRequestSix();
+                    }
+                    if (textView7th.getVisibility() == View.VISIBLE) {
+                        stringRequestSeven();
+                    }
+                    if (textView8th.getVisibility() == View.VISIBLE) {
+                        stringRequestEight();
+                    }
+                    if (textView9th.getVisibility() == View.VISIBLE) {
+                        stringRequestNine();
+                    }
+                    if (textView10th.getVisibility() == View.VISIBLE) {
+                        stringRequestTen();
+                    }
+
+
+//                    StringRequest stringRequest = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+//                            new Response.Listener<String>() {
+//                                @Override
+//                                public void onResponse(String response) {
+//                                    try {
+//                                        JSONArray jsonArray = new JSONArray(response);
+//                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+//
+//                                        String code = jsonObject.getString("tranc_success");
+//
+//                                    } catch (JSONException e) {
+//                                        e.printStackTrace();
+//                                    }
+//
+//                                }
+//                            }, new Response.ErrorListener() {
+//                        @Override
+//                        public void onErrorResponse(VolleyError error) {
+//
+//                        }
+//                    }) {
+//                        @Override
+//                        protected Map<String, String> getParams() throws AuthFailureError
+//                        {
+//
+//                            String[] snacksNames = {
+//                                    textView.isShown() ? textView.getText().toString().substring(textView.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView2nd.isShown() ? textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView3rd.isShown() ? textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView4th.isShown() ? textView4th.getText().toString().substring(textView4th.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView5th.isShown() ? textView5th.getText().toString().substring(textView5th.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView6th.isShown() ? textView6th.getText().toString().substring(textView6th.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView7th.isShown() ? textView7th.getText().toString().substring(textView7th.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView8th.isShown() ? textView8th.getText().toString().substring(textView8th.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView9th.isShown() ? textView9th.getText().toString().substring(textView9th.getText().toString().indexOf("NAIRA")+6) : null,
+//                                    textView10th.isShown() ? textView10th.getText().toString().substring(textView10th.getText().toString().indexOf("NAIRA")+6) : null
+//
+//                            };
+//
+//                            String[] snacksPrices = {
+//                                    textView.isShown() ? textView.getText().toString().substring(textView.getText().toString().indexOf(""), textView.getText().toString().indexOf(" ")) : null,
+//                                    textView2nd.isShown() ? textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf(""), textView2nd.getText().toString().indexOf(" ")) : null,
+//                                    textView3rd.isShown() ? textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf(""), textView3rd.getText().toString().indexOf(" ")) : null,
+//                                    textView4th.isShown() ? textView4th.getText().toString().substring(textView4th.getText().toString().indexOf(""), textView4th.getText().toString().indexOf(" ")) : null,
+//                                    textView5th.isShown() ? textView5th.getText().toString().substring(textView5th.getText().toString().indexOf(""), textView5th.getText().toString().indexOf(" ")) : null,
+//                                    textView6th.isShown() ? textView6th.getText().toString().substring(textView6th.getText().toString().indexOf(""), textView6th.getText().toString().indexOf(" ")) : null,
+//                                    textView7th.isShown() ? textView7th.getText().toString().substring(textView7th.getText().toString().indexOf(""), textView7th.getText().toString().indexOf(" ")) : null,
+//                                    textView8th.isShown() ? textView8th.getText().toString().substring(textView8th.getText().toString().indexOf(""), textView8th.getText().toString().indexOf(" ")) : null,
+//                                    textView9th.isShown() ? textView9th.getText().toString().substring(textView9th.getText().toString().indexOf(""), textView9th.getText().toString().indexOf(" ")) : null,
+//                                    textView10th.isShown() ? textView10th.getText().toString().substring(textView10th.getText().toString().indexOf(""), textView10th.getText().toString().indexOf(" ")) : null
+//
+//                            };
+//
+//                            Map<String, String> params = new HashMap<String, String>();
+//                            for (String Names : snacksNames) {
+//                                if (!(Names == null))
+//                                    params.put("snacks_names", Arrays.toString(snacksNames).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));
+//                            }
+//                            for (String Prices : snacksPrices) {
+//                                if (!(Prices == null))
+//                                    params.put("snacks_prices", Arrays.toString(snacksPrices).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));
+//                            }
+//                            params.put("buyer_name", fullUsername.getText().toString());
+//                            params.put("no_plates", NoOfPlates.getText().toString());
+//                            params.put("total_price", ChosenplateCounter.feetag.getText().toString());
+//                            params.put("vendor_id", app.Idtext.getText().toString());
+//
+//                            return params;
+//                        }
+//                    };
+//
+//                    MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequest);
+
+
+                    StringRequest LandMarkUniversity = new StringRequest(Request.Method.POST, webmail_snackstranc_details,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     try {
-                                        JSONArray jsonArray = new JSONArray(response);
-                                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                        JSONArray johnson = new JSONArray(response);
+                                        JSONObject james = johnson.getJSONObject(0);
 
-                                        String code = jsonObject.getString("tranc_success");
+                                        String code = james.getString("");
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -394,21 +673,21 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
 
-                            String[] snacksNames = {
-                                    textView.isShown() ? textView.getText().toString().substring(textView.getText().toString().indexOf("naira")+6) : null,
-                                    textView2nd.isShown() ? textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf("naira")+6) : null,
-                                    textView3rd.isShown() ? textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf("naira")+6) : null,
-                                    textView4th.isShown() ? textView4th.getText().toString().substring(textView4th.getText().toString().indexOf("naira")+6) : null,
-                                    textView5th.isShown() ? textView5th.getText().toString().substring(textView5th.getText().toString().indexOf("naira")+6) : null,
-                                    textView6th.isShown() ? textView6th.getText().toString().substring(textView6th.getText().toString().indexOf("naira")+6) : null,
-                                    textView7th.isShown() ? textView7th.getText().toString().substring(textView7th.getText().toString().indexOf("naira")+6) : null,
-                                    textView8th.isShown() ? textView8th.getText().toString().substring(textView8th.getText().toString().indexOf("naira")+6) : null,
-                                    textView9th.isShown() ? textView9th.getText().toString().substring(textView9th.getText().toString().indexOf("naira")+6) : null,
-                                    textView10th.isShown() ? textView10th.getText().toString().substring(textView10th.getText().toString().indexOf("naira")+6) : null
+                            String[] webmail_SnacksNames = {
+                                    textView.isShown() ? textView.getText().toString().substring(textView.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView2nd.isShown() ? textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView3rd.isShown() ? textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView4th.isShown() ? textView4th.getText().toString().substring(textView4th.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView5th.isShown() ? textView5th.getText().toString().substring(textView5th.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView6th.isShown() ? textView6th.getText().toString().substring(textView6th.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView7th.isShown() ? textView7th.getText().toString().substring(textView7th.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView8th.isShown() ? textView8th.getText().toString().substring(textView8th.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView9th.isShown() ? textView9th.getText().toString().substring(textView9th.getText().toString().indexOf("NAIRA")+6) : null,
+                                    textView10th.isShown() ? textView10th.getText().toString().substring(textView10th.getText().toString().indexOf("NAIRA")+6) : null
 
                             };
 
-                            String[] snacksPrices = {
+                            String[] webmail_SnacksPrices = {
                                     textView.isShown() ? textView.getText().toString().substring(textView.getText().toString().indexOf(""), textView.getText().toString().indexOf(" ")) : null,
                                     textView2nd.isShown() ? textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf(""), textView2nd.getText().toString().indexOf(" ")) : null,
                                     textView3rd.isShown() ? textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf(""), textView3rd.getText().toString().indexOf(" ")) : null,
@@ -423,23 +702,27 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                             };
 
                             Map<String, String> params = new HashMap<String, String>();
-                            for (String Names : snacksNames) {
+                            for (String Names : webmail_SnacksNames) {
                                 if (!(Names == null))
-                                    params.put("snacks_names", Arrays.toString(snacksNames).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));
+                                    params.put("snacks_names", Arrays.toString(webmail_SnacksNames).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));
                             }
-                            for (String Prices : snacksPrices) {
+                            for (String Prices : webmail_SnacksPrices) {
                                 if (!(Prices == null))
-                                    params.put("snacks_prices", Arrays.toString(snacksPrices).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));
+                                    params.put("snacks_prices", Arrays.toString(webmail_SnacksPrices).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));
                             }
-                            params.put("buyer_name", fullUsername.getText().toString());
                             params.put("no_plates", NoOfPlates.getText().toString());
                             params.put("total_price", ChosenplateCounter.feetag.getText().toString());
-                            params.put("vendor_id", app.Idtext.getText().toString());
+                            params.put("vendor_name", app.Nametext.getText().toString());
+                            params.put("email", EmailAddress.getText().toString());
+                            params.put("sex", Sex.getText().toString());
+                            params.put("accountbalance", ChosenplateCounter.feetag.getText().toString());
 
                             return params;
                         }
                     };
-                    MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequest);
+                    MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(LandMarkUniversity);
+
+
 
                     startActivity(intent);
                 }
@@ -448,6 +731,617 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
         AlertDialog alertDialog = Dweezy.create();
         alertDialog.show();
     }
+
+
+
+    public void stringRequestOne() {
+
+
+            StringRequest stringRequestOne = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView.getText().toString().equals("80 NAIRA C. BREAD")) {
+
+                        paramsOne.put("snacks_names", "C.BREAD");
+                        paramsOne.put("snacks_prices", "80");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackAOneBeta  = textView.getText().toString().substring(textView.getText().toString().indexOf("NAIRA")+6);
+                        SnackAOne = SnackAOneBeta.substring(SnackAOneBeta.indexOf(""), SnackAOneBeta.indexOf("("));
+                        SnackATwo = textView.getText().toString().substring(textView.getText().toString().indexOf(""), textView.getText().toString().indexOf(" "));
+
+                        NoOfSnackA = SnackAOneBeta.substring(SnackAOneBeta.indexOf("(")+1,SnackAOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackAOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackATwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackA);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestOne);
+
+    }
+
+    public void stringRequestTwo() {
+
+
+            StringRequest stringRequestTwo = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView2nd.getText().toString().equals("80 NAIRA DOUGHNUT")) {
+
+                        paramsOne.put("snacks_names", "DOUGHNUT");
+                        paramsOne.put("snacks_prices", "80");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackBOneBeta  = textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf("NAIRA")+6);
+                        SnackBOne = SnackBOneBeta.substring(SnackBOneBeta.indexOf(""), SnackBOneBeta.indexOf("("));
+                        SnackBTwo = textView2nd.getText().toString().substring(textView2nd.getText().toString().indexOf(""), textView2nd.getText().toString().indexOf(" "));
+
+                        NoOfSnackB = SnackBOneBeta.substring(SnackBOneBeta.indexOf("(")+1,SnackBOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackBOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackBTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackB);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestTwo);
+
+    }
+
+    public void stringRequestThree() {
+
+
+            StringRequest stringRequestThree = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView3rd.getText().toString().equals("120 NAIRA MEATPIE")) {
+
+                        paramsOne.put("snacks_names", "MEATPIE");
+                        paramsOne.put("snacks_prices", "120");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackCOneBeta  = textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf("NAIRA")+6);
+                        SnackCOne = SnackCOneBeta.substring(SnackCOneBeta.indexOf(""), SnackCOneBeta.indexOf("("));
+                        SnackCTwo = textView3rd.getText().toString().substring(textView3rd.getText().toString().indexOf(""), textView3rd.getText().toString().indexOf(" "));
+
+                        NoOfSnackC = SnackCOneBeta.substring(SnackCOneBeta.indexOf("(")+1,SnackCOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackCOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackCTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackC);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestThree);
+
+    }
+
+    public void stringRequestFour() {
+
+
+            StringRequest stringRequestFour = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView4th.getText().toString().equals("100 NAIRA SAUSAGE")) {
+
+                        paramsOne.put("snacks_names", "SAUSAGE");
+                        paramsOne.put("snacks_prices", "100");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackDOneBeta  = textView4th.getText().toString().substring(textView4th.getText().toString().indexOf("NAIRA")+6);
+                        SnackDOne = SnackDOneBeta.substring(SnackDOneBeta.indexOf(""), SnackDOneBeta.indexOf("("));
+                        SnackDTwo = textView4th.getText().toString().substring(textView4th.getText().toString().indexOf(""), textView4th.getText().toString().indexOf(" "));
+
+                        NoOfSnackD = SnackDOneBeta.substring(SnackDOneBeta.indexOf("(")+1,SnackDOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackDOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackDTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackD);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestFour);
+
+    }
+
+    public void stringRequestFive() {
+
+            StringRequest stringRequestFive = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView5th.getText().toString().equals("80 NAIRA EGG ROLL")) {
+
+                        paramsOne.put("snacks_names", "EGGROLL");
+                        paramsOne.put("snacks_prices", "80");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackEOneBeta  = textView5th.getText().toString().substring(textView5th.getText().toString().indexOf("NAIRA")+6);
+                        SnackEOne = SnackEOneBeta.substring(SnackEOneBeta.indexOf(""), SnackEOneBeta.indexOf("("));
+                        SnackETwo = textView5th.getText().toString().substring(textView5th.getText().toString().indexOf(""), textView5th.getText().toString().indexOf(" "));
+
+                        NoOfSnackE = SnackEOneBeta.substring(SnackEOneBeta.indexOf("(")+1,SnackEOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackEOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackETwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackE);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestFive);
+
+    }
+
+    public void stringRequestSix() {
+
+
+            StringRequest stringRequestSix = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView6th.getText().toString().equals("150 NAIRA FISH ROLL")) {
+
+                        paramsOne.put("snacks_names", "FISHROLL");
+                        paramsOne.put("snacks_prices", "150");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackFOneBeta  = textView6th.getText().toString().substring(textView6th.getText().toString().indexOf("NAIRA")+6);
+                        SnackFOne = SnackFOneBeta.substring(SnackFOneBeta.indexOf(""), SnackFOneBeta.indexOf("("));
+                        SnackFTwo = textView6th.getText().toString().substring(textView6th.getText().toString().indexOf(""), textView6th.getText().toString().indexOf(" "));
+
+                        NoOfSnackF = SnackFOneBeta.substring(SnackFOneBeta.indexOf("(")+1,SnackFOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackFOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackFTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackF);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestSix);
+
+    }
+
+    public void stringRequestSeven() {
+
+
+            StringRequest stringRequestSeven = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView7th.getText().toString().equals("150 NAIRA C. SAVANNA")) {
+
+                        paramsOne.put("snacks_names", "C.SAVANNA");
+                        paramsOne.put("snacks_prices", "150");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackGOneBeta  = textView7th.getText().toString().substring(textView7th.getText().toString().indexOf("NAIRA")+6);
+                        SnackGOne = SnackGOneBeta.substring(SnackGOneBeta.indexOf(""), SnackGOneBeta.indexOf("("));
+                        SnackGTwo = textView7th.getText().toString().substring(textView7th.getText().toString().indexOf(""), textView7th.getText().toString().indexOf(" "));
+
+                        NoOfSnackG = SnackGOneBeta.substring(SnackGOneBeta.indexOf("(")+1,SnackGOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackGOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackGTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackG);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestSeven);
+
+    }
+
+    public void stringRequestEight() {
+
+            StringRequest stringRequestEight = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView8th.getText().toString().equals("100 NAIRA P. SAVANNA")) {
+
+                        paramsOne.put("snacks_names", "P.SAVANNA");
+                        paramsOne.put("snacks_prices", "100");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackHOneBeta  = textView8th.getText().toString().substring(textView8th.getText().toString().indexOf("NAIRA")+6);
+                        SnackHOne = SnackHOneBeta.substring(SnackHOneBeta.indexOf(""), SnackHOneBeta.indexOf("("));
+                        SnackHTwo = textView8th.getText().toString().substring(textView8th.getText().toString().indexOf(""), textView8th.getText().toString().indexOf(" "));
+
+                        NoOfSnackH = SnackHOneBeta.substring(SnackHOneBeta.indexOf("(")+1,SnackHOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackHOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackHTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackH);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestEight);
+
+    }
+
+    public void stringRequestNine() {
+
+            StringRequest stringRequestNine = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView9th.getText().toString().equals("150 NAIRA C. SEVENUP")) {
+
+                        paramsOne.put("snacks_names", "C.SEVENUP");
+                        paramsOne.put("snacks_prices", "150");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackIOneBeta  = textView9th.getText().toString().substring(textView9th.getText().toString().indexOf("NAIRA")+6);
+                        SnackIOne = SnackIOneBeta.substring(SnackIOneBeta.indexOf(""), SnackIOneBeta.indexOf("("));
+                        SnackITwo = textView9th.getText().toString().substring(textView9th.getText().toString().indexOf(""), textView9th.getText().toString().indexOf(" "));
+
+                        NoOfSnackI = SnackIOneBeta.substring(SnackIOneBeta.indexOf("(")+1,SnackIOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackIOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackITwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackI);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestNine);
+
+    }
+
+    public void stringRequestTen() {
+
+
+            StringRequest stringRequestTen = new StringRequest(Request.Method.POST, insert_bought_snacksitems,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                                String code = jsonObject.getString("tranc_success");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+
+                    Map<String, String> paramsOne = new HashMap<>();
+
+                    if (textView10th.getText().toString().equals("150 NAIRA C. MIRINDA")) {
+
+                        paramsOne.put("snacks_names", "C.MIRINDA");
+                        paramsOne.put("snacks_prices", "150");
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfPlates.getText().toString());
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+                    }
+                    else {
+
+                        SnackJOneBeta  = textView10th.getText().toString().substring(textView10th.getText().toString().indexOf("NAIRA")+6);
+                        SnackJOne = SnackJOneBeta.substring(SnackJOneBeta.indexOf(""), SnackJOneBeta.indexOf("("));
+                        SnackJTwo = textView10th.getText().toString().substring(textView10th.getText().toString().indexOf(""), textView10th.getText().toString().indexOf(" "));
+
+                        NoOfSnackJ = SnackJOneBeta.substring(SnackJOneBeta.indexOf("(")+1,SnackJOneBeta.indexOf(")"));
+
+                        paramsOne.put("snacks_names", SnackJOne.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("snacks_prices", SnackJTwo.replace(" ", "").replace("null,", "").replace("null", "").replace(",", "\n").replace("[", "").replace("]", ""));
+                        paramsOne.put("buyer_name", fullUsername.getText().toString());
+                        paramsOne.put("no_plates", NoOfSnackJ);
+                        paramsOne.put("total_price", ChosenplateCounter.feetag.getText().toString());
+                        paramsOne.put("vendor_id", app.Idtext.getText().toString());
+
+                    }
+                    return paramsOne;
+                }
+            };
+            MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(stringRequestTen);
+
+    }
+
+
+
+
 
     @Override
     public void respond(int ant) {
@@ -499,6 +1393,8 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
         Bundle myMoney = getIntent().getExtras();
         myMoney.getString("");
         Snackbar CheckMyMoney = Snackbar.make(relative, "Your balance is: " + myMoney.getString("accountbalance"), Snackbar.LENGTH_LONG);
+        View ColourfulMoney = CheckMyMoney.getView();
+        ColourfulMoney.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSnqck));
         CheckMyMoney.setActionTextColor(Color.GREEN);
         CheckMyMoney.show();
     }
@@ -506,7 +1402,9 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
     public void AlrightImOff(MenuItem item) {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         setTitle("");
-        alertDialog.setTitle("End Transaction");
+        Bundle Oyedepo = getIntent().getExtras();
+
+        alertDialog.setTitle("Come on " + Oyedepo.getString("king") + "");
         alertDialog.setMessage("This action will cancel this current operation. Do you want to cancel your transaction? ");
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -847,11 +1745,252 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
         dialog.show();
     }
 
+    public void autoBio(View view) {
+
+
+        LayoutInflater inflater = SnacksmenuActivity.this.getLayoutInflater();
+        view = inflater.inflate(R.layout.sa_userprof_background, null);
+
+
+
+        Lenient = new AlertDialog.Builder(SnacksmenuActivity.this);
+        Lenient.setView(view);
+
+        Department = view.findViewById(R.id.department);
+        UserProfileAccountBalance = view.findViewById(R.id.userProfileAccountBalance);
+        UserProfileName = view.findViewById(R.id.userProfileName);
+        UserProfileStarLevel = view.findViewById(R.id.userProfileStarLevel);
+        UserProfileSex = view.findViewById(R.id.userProfileSex);
+        UserProfileImage = view.findViewById(R.id.userProfileImage);
+        Level = view.findViewById(R.id.level);
+        LastSeen = view.findViewById(R.id.lastSeen);
+
+        final Bundle lenient = getIntent().getExtras();
+        getUserProfileAppearance(lenient.getString("image"));
+
+
+        Bundle ForthParcel = getIntent().getExtras();
+        try {
+            Department.setText("" + ForthParcel.getString("department") + "");
+        } catch (Exception ignored) {
+
+        }
+
+        Bundle FifthParcel = getIntent().getExtras();
+        try {
+            Level.setText("" + FifthParcel.getString("level") + "");
+        } catch (Exception ignored) {
+
+        }
+
+        Bundle SixthParcel = getIntent().getExtras();
+        try {
+            UserProfileAccountBalance.setText("" + SixthParcel.getString("accountbalance") + "");
+        } catch (Exception ignored) {
+
+        }
+
+        Bundle SeventhParcel = getIntent().getExtras();
+        try {
+            UserProfileSex.setText("" + SeventhParcel.getString("sex") + "");
+        } catch (Exception ignored) {
+
+        }
+
+        Bundle EightParcel = getIntent().getExtras();
+        String myBirthtime = EightParcel.getString("time");
+        final String justMonthNDate = myBirthtime;
+        final String isToday = justMonthNDate != null ? justMonthNDate.substring(justMonthNDate.indexOf("- ") + 2) : null;
+
+
+        Bundle NinthParcel = getIntent().getExtras();
+        try {
+            LastSeen.setText("" + NinthParcel.getString("last_seen_accept") + "");
+        } catch (Exception ignored) {
+
+        }
+
+        Bundle TenthParcel = getIntent().getExtras();
+        TenthParcel.getString("d_n_m");
+        String myBirthday = TenthParcel.getString("d_n_m");
+
+        Bundle EleventhParcel = getIntent().getExtras();
+        if (Objects.equals(myBirthday, isToday)) {
+
+            faith = (EmojiRainLayout) view;
+
+
+            faith.addEmoji(R.drawable.c_happy_h);
+            faith.addEmoji(R.drawable.c_happy_a);
+            faith.addEmoji(R.drawable.c_happy_p);
+            faith.addEmoji(R.drawable.c_happy_p_two);
+            faith.addEmoji(R.drawable.c_happy_y);
+
+            faith.addEmoji(R.drawable.c_happy_b);
+            faith.addEmoji(R.drawable.c_happy_i);
+            faith.addEmoji(R.drawable.c_happy_r);
+            faith.addEmoji(R.drawable.c_happy_t);
+            faith.addEmoji(R.drawable.c_happy_h_two);
+            faith.addEmoji(R.drawable.c_happy_d);
+            faith.addEmoji(R.drawable.c_happy_a_two);
+            faith.addEmoji(R.drawable.c_happy_y_two);
+
+            faith.stopDropping();
+            faith.setPer(10);
+            faith.setDuration(7200);
+            faith.setDropDuration(4400);
+            faith.setDropFrequency(500);
+
+            faith.startDropping();
+
+            UserProfileName.setText("Happy Birthday " + EightParcel.getString("name") + "");
+            UserProfileName.setTextSize(30);
+
+        }
+        else {
+            try {
+                UserProfileName.setText("" + EleventhParcel.getString("name") + "");
+            } catch (Exception ignored) {
+
+            }
+        }
+
+        Adamu = Lenient.create();
+        Adamu.show();
+    }
+
+    public void userProfileLayoutButton(View view) {
+
+        Adamu.cancel();
+
+    }
+
+    private void getUserProfileAppearance(String url) {
+
+        Bundle SexParcel = getIntent().getExtras();
+        Sex.setText(SexParcel.getString("sex"));
+
+        if (Sex.getText().toString().equals("female")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorgirl).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("male")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorboy).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("doctor")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errordoctor).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("professor")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorprof).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("mr")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errormr).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("engineer")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errorengr).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("mrs")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errormrs).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+        if (Sex.getText().toString().equals("miss")) {
+            Picasso.with(this).load(url).placeholder(R.drawable.c_failed_userappearancesub).error(R.drawable.c_errormiss).into(UserProfileImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         setTitle("");
-        alertDialog.setTitle("End Transaction");
+        Bundle Oyedepo = getIntent().getExtras();
+
+        alertDialog.setTitle("Come on " + Oyedepo.getString("king") + "");
         alertDialog.setMessage("This action will cancel this current operation. Do you want to cancel your transaction? ");
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -874,7 +2013,9 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
     @Override
     public boolean onSupportNavigateUp() {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("End Transaction");
+        Bundle Oyedepo = getIntent().getExtras();
+
+        alertDialog.setTitle("Come on " + Oyedepo.getString("king") + "");
         alertDialog.setMessage("This action will cancel this current operation. Do you want to Cancel your transaction? ");
         alertDialog.setIcon(R.drawable.a_alert);
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

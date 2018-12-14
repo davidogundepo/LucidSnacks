@@ -6,14 +6,14 @@
             <!-- make a gradient background-->
             <gradient
                 android:type="linear"
-                android:startColor="#37474F"
-                android:endColor="#37474F"
-                android:centerColor="#37474F"
+                android:startColor="@color/PackorPlates"
+                android:endColor="@color/PackorPlates"
+                android:centerColor="@color/PackorPlates"
                 android:angle="90"
                 android:gradientRadius="90"/>
 
             <!-- apply a border around button-->
-            <stroke android:color="#37474F"
+            <stroke android:color="@color/PackorPlates"
                 android:width="2dp" />
             <!-- make the button corners rounded -->
             <corners android:radius="5dp" />

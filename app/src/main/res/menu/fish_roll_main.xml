@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/fish_roll">
+        <item android:id="@+id/five_fish_roll" android:title="750 NAIRA FISH ROLL(5)"/>
+        <item android:id="@+id/six_fish_roll" android:title="900 NAIRA FISH ROLL(6)"/>
+        <item android:id="@+id/seven_fish_roll" android:title="1050 NAIRA FISH ROLL(7)"/>
+        <item android:id="@+id/eight_fish_roll" android:title="1200 NAIRA FISH ROLL(8)"/>
+        <item android:id="@+id/nine_fish_roll" android:title="1350 NAIRA FISH ROLL(9)"/>
+        <item android:id="@+id/ten_fish_roll" android:title="1500 NAIRA FISH ROLL(10)"/>
+        <item android:id="@+id/eleven_fish_roll" android:title="1650 NAIRA FISH ROLL(11)"/>
+        <item android:id="@+id/twelve_fish_roll" android:title="1800 NAIRA FISH ROLL(12)"/>
+        <item android:id="@+id/thirteen_fish_roll" android:title="1950 NAIRA FISH ROLL(13)"/>
+        <item android:id="@+id/fourteen_fish_roll" android:title="2100 NAIRA FISH ROLL(14)"/>
+        <item android:id="@+id/fifteen_fish_roll" android:title="2250 NAIRA FISH ROLL(15)"/>
+        <item android:id="@+id/sixteen_fish_roll" android:title="2400 NAIRA FISH ROLL(16)"/>
+        <item android:id="@+id/seventeen_fish_roll" android:title="2550 NAIRA FISH ROLL(17)"/>
+        <item android:id="@+id/eighteen_fish_roll" android:title="2700 NAIRA FISH ROLL(18)"/>
+        <item android:id="@+id/nineteen_fish_roll" android:title="2850 NAIRA FISH ROLL(19)"/>
+        <item android:id="@+id/twenty_fish_roll" android:title="3000 NAIRA FISH ROLL(20)"/>
+    </group>
+
+</menu>

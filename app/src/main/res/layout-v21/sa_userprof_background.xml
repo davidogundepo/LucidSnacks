@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.luolc.emojirain.EmojiRainLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emojiRainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:id="@+id/userProfileLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.icdatofcusgmail.lucidsnacks.SnacksActivityArchive.SnacksmenuActivity"
+    android:background="@color/lowerBoundUPLayoutColor"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/lowerBoundUPLayoutColor"
+        android:layout_width="match_parent"
+        android:layout_height="650dp">
+        <LinearLayout
+            android:background="@drawable/sa_gradientbackground"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:orientation="vertical">
+            <ImageView
+                android:background="@color/userProfileLayoutStart"
+                android:elevation="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="250dp"
+                android:id="@+id/userProfileImage"
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/c_modprof">
+
+                <!--<Button-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="fffffff"/>-->
+
+            </ImageView>
+            <TextView
+                android:background="@color/userProfileLayoutStart"
+                android:id="@+id/userProfileName"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dweezy Oludepo"
+                android:textColor="@color/userProfileNameTextColor"
+                android:textStyle="bold"
+                android:textSize="41sp"/>
+        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:background="@color/UPCardViewLayout"
+            android:layout_width="600dp"
+            android:layout_height="380dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="390dp">
+            <LinearLayout
+                android:background="@color/UPCardViewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:background="@color/UPCardViewLayout"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:background="@color/UPCardViewLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Account Balance"
+                        android:textSize="30sp"
+                        android:textColor="@color/userProfileTextColor"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:background="@color/UPCardViewLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="125"
+                        android:id="@+id/userProfileAccountBalance"
+                        android:textSize="25sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/userProfileLayoutStart"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/UPCardViewLayout"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:background="@color/UPCardViewLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Star Level "
+                        android:drawableEnd="@drawable/sa_starlevel_icon"
+                        android:textSize="30sp"
+                        android:textColor="@color/userProfileTextColor"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:background="@color/UPCardViewLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coming Soon"
+                        android:id="@+id/userProfileStarLevel"
+                        android:textSize="25sp"
+                        android:paddingTop="20dp"
+                        android:textColor="@color/userProfileLayoutStart"/>
+
+                    <!--<RatingBar-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/RatingBarLayout"-->
+                    <!--android:stepSize="0.25"-->
+                    <!--android:numStars="5"-->
+                    <!--android:rating="2"/>-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@color/lowerBoundUPLayoutColor"
+        android:layout_width="460dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="85dp">
+        <LinearLayout
+            android:background="@color/lowerBoundUPLayoutColor"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
+            android:paddingEnd="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/sa_sex_icon"/>
+            <TextView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:textSize="20sp"
+                android:textColor="@color/userProfileTextColor"
+                android:id="@+id/userProfileSex"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:text="Kvng"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/lowerBoundUPLayoutColor"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
+            android:paddingEnd="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/sa_department_icon"/>
+            <TextView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:textSize="20sp"
+                android:textColor="@color/userProfileTextColor"
+                android:id="@+id/department"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:text="Accounting Department"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/lowerBoundUPLayoutColor"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
+            android:paddingEnd="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/sa_level_icon"/>
+            <TextView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:textSize="20sp"
+                android:textColor="@color/userProfileTextColor"
+                android:id="@+id/level"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:text="400 Level"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/lowerBoundUPLayoutColor"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
+            android:paddingEnd="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/sa_lastseen_icon"/>
+            <TextView
+                android:textColor="@color/userProfileTextColor"
+                android:background="@color/lowerBoundUPLayoutColor"
+                android:textSize="20sp"
+                android:id="@+id/lastSeen"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:text="Wednesday"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:textColor="@color/userProfileButtonTextColor"
+        android:textSize="20sp"
+        android:onClick="userProfileLayoutButton"
+        android:shadowColor="@color/userProfileLayoutStart"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/sa_buttonstylegradient"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="That's Me"/>
+
+</LinearLayout>
+</com.luolc.emojirain.EmojiRainLayout>

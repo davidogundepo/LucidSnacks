@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_snackmenu"
+    android:id="@+id/activity_Snacksmenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.icdatofcusgmail.lucidsnacks.SnacksActivityArchive.SnacksmenuActivity">
@@ -27,9 +27,9 @@
         android:text="@string/snackmenuActivityToolbarOneAppnameLessthan"
         android:fontFamily="14pt"
         android:gravity="center"
-        android:elevation="4dp"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        style="@style/SnacksmenuActivityLucidAppMainFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/AppName"
@@ -42,9 +42,8 @@
         android:text="@string/snackmenuActivityToolbarTwoWelcome_UsernameLessthan"
         android:fontFamily="14pt"
         android:gravity="center"
-        android:elevation="4dp"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/UserWelcome"
@@ -57,19 +56,16 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/animatedImages"
-        android:elevation="4dp"
         android:src="@drawable/sa_hunger_displacement_drill"
+        android:contentDescription="@string/Content_Description_AnimatedImages_Lessthan"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/UserWelcome"
-        android:layout_marginStart="77dp"
-        android:layout_above="@+id/ToolbarsnackmenuActivity"
-        android:contentDescription="@string/Content_Description_AnimatedImages_Lessthan" />
+        android:layout_toEndOf="@+id/FragmentCounter"
+        android:layout_above="@+id/ToolbarsnackmenuActivity" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/c_davooo"
-        android:elevation="4dp"
         android:padding="8dp"
         android:id="@+id/ServerImage"
         android:layout_toStartOf="@+id/UserWelcome"
@@ -88,7 +84,7 @@
 
     <fragment
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="200dp"
         android:name="com.icdatofcusgmail.lucidsnacks.SnacksActivityArchive.PlatecountConfirmpurchaseFragment"
         android:id="@+id/FragmentSelectPlatenumberandPurchase"
         android:layout_alignParentStart="true"
@@ -96,8 +92,8 @@
         android:layout_alignParentBottom="true" />
 
     <fragment
-        android:layout_width="200dp"
-        android:layout_height="170dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:name="com.icdatofcusgmail.lucidsnacks.SnacksActivityArchive.ChosenplateCounter"
         android:id="@+id/FragmentCounter"
         android:layout_alignBottom="@+id/FragmentSelectPlatenumberandPurchase"
@@ -112,7 +108,8 @@
         tools:layout="@layout/snackmenufragment3_chosensnack"
         android:layout_above="@+id/FragmentSelectPlatenumberandPurchase"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/Fragmentsnackavailable" />
+        android:layout_toEndOf="@+id/Fragmentsnackavailable"
+        android:layout_below="@+id/Fragmentsnackprice" />
 
     <fragment
         android:layout_width="match_parent"
@@ -120,9 +117,55 @@
         android:name="com.icdatofcusgmail.lucidsnacks.SnacksActivityArchive.SnackspriceFragment"
         android:id="@+id/Fragmentsnackprice"
         tools:layout="@layout/snackmenufragment2_snackprice"
-        android:layout_above="@+id/FragmentChosensnack"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/Fragmentsnackavailable"
         android:layout_below="@+id/ToolbarsnackmenuActivity" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/AppName"
+        android:format12Hour="hh:mm:ss a"
+        android:layout_alignBottom="@+id/AppName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="35dp" />
+
+    <TextView
+        android:id="@+id/fullUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignBottom="@+id/textClock"
+        android:layout_toStartOf="@+id/FragmentCounter"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/CountMyPlate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="@string/PlateCountNo" />
+
+    <TextView
+        android:id="@+id/emailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Fragmentsnackprice"
+        android:layout_alignEnd="@+id/animatedImages"
+        android:layout_marginBottom="21dp"
+        android:visibility="invisible"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/InPackorPlate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/emailAddress"
+        android:layout_marginEnd="38dp"
+        android:layout_toStartOf="@+id/textClock"
+        android:visibility="invisible"
+        android:text="NO" />
 
 </RelativeLayout>

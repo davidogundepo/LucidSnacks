@@ -19,7 +19,7 @@
 
     <TextView
         android:text="Items"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,8 @@
         android:layout_below="@+id/itemsState">
         <TextView
             android:text="@string/selecteditemsv19_V_Activity"
-            android:textSize="30dp"
+            android:textSize="30sp"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/itemsBeenSelected" />
@@ -80,7 +81,8 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_platecount"
+        android:src="@drawable/a_platecount_b"
+        android:visibility="invisible"
         android:onClick="OCDynamicPlateCount"
         android:id="@+id/OCdynamicPlateCount"
         android:background="@drawable/oval_dynamicplatecount"
@@ -88,22 +90,22 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/dynamicplatecount" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All"
-        android:id="@+id/checkboxAll"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="50dp"
-        android:layout_alignBottom="@+id/ToolbarVendorActivity"
-        android:theme="@style/VendorActivityCheckBox"/>
+    <!--<CheckBox-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="All"-->
+        <!--android:id="@+id/checkboxAll"-->
+        <!--android:textColor="#FFFFFF"-->
+        <!--android:textSize="25sp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginEnd="50dp"-->
+        <!--android:layout_alignBottom="@+id/ToolbarVendorActivity"-->
+        <!--android:theme="@style/VendorActivityCheckBox"/>-->
 
     <fragment
         android:layout_width="match_parent"
-        android:layout_height="900dp"
+        android:layout_height="1400dp"
         android:name="com.icdatofcusgmail.lucidsnacks.VendorActivityArchive.VendorFragment"
         android:id="@+id/displayAddorRemoveLayout"
         android:layout="@layout/fragment_vendor"
@@ -116,11 +118,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/selectedYet"
         android:text=""
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColor="#FFFFFF"
-        android:layout_alignBaseline="@+id/checkboxAll"
-        android:layout_alignBottom="@+id/checkboxAll"
         android:layout_alignParentStart="true"
         android:layout_marginStart="38dp" />
+
+    <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/vendoractivity_vendor_idno_background"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="@string/id_no_display_Vendor_Activity"
+        android:textColor="@color/VendorIDTextColor"
+        android:layout_above="@+id/itemsState"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

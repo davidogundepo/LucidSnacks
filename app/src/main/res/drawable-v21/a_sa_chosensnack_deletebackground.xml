@@ -4,10 +4,10 @@
     <item>
         <shape android:shape="oval">
             <size android:width="30dp" android:height="30dp" />
-            <solid android:color="#FFFFFF" />
+            <solid android:color="@color/ChosenPlateDeleteBackGround" />
         </shape>
 
-        <ripple android:color="#D32F2F" />
+        <ripple android:color="@color/colorNursery" />
     </item>
 
 </selector>

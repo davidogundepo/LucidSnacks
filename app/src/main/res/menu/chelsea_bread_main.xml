@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/Chelsea_Bread">
+        <item android:id="@+id/five_chelsea_bread" android:title="400 NAIRA C. BREAD(5)"/>
+        <item android:id="@+id/six_chelsea_bread" android:title="480 NAIRA C. BREAD(6)"/>
+        <item android:id="@+id/seven_chelsea_bread" android:title="560 NAIRA C. BREAD(7)"/>
+        <item android:id="@+id/eight_chelsea_bread" android:title="640 NAIRA C. BREAD(8)"/>
+        <item android:id="@+id/nine_chelsea_bread" android:title="720 NAIRA C. BREAD(9)"/>
+        <item android:id="@+id/ten_chelsea_bread" android:title="800 NAIRA C. BREAD(10)"/>
+        <item android:id="@+id/eleven_chelsea_bread" android:title="880 NAIRA C. BREAD(11)"/>
+        <item android:id="@+id/twelve_chelsea_bread" android:title="960 NAIRA C. BREAD(12)"/>
+        <item android:id="@+id/thirteen_chelsea_bread" android:title="1040 NAIRA C. BREAD(13)"/>
+        <item android:id="@+id/fourteen_chelsea_bread" android:title="1120 NAIRA C. BREAD(14)"/>
+        <item android:id="@+id/fifteen_chelsea_bread" android:title="1200 NAIRA C. BREAD(15)"/>
+        <item android:id="@+id/sixteen_chelsea_bread" android:title="1280 NAIRA C. BREAD(16)"/>
+        <item android:id="@+id/seventeen_chelsea_bread" android:title="1360 NAIRA C. BREAD(17)"/>
+        <item android:id="@+id/eighteen_chelsea_bread" android:title="1440 NAIRA C. BREAD(18)"/>
+        <item android:id="@+id/nineteen_chelsea_bread" android:title="1520 NAIRA C. BREAD(19)"/>
+        <item android:id="@+id/twenty_chelsea_bread" android:title="1600 NAIRA C. BREAD(20)"/>
+    </group>
+
+</menu>

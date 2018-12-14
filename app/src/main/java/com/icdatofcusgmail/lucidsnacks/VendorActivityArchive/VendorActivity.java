@@ -46,11 +46,10 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
     Toolbar toolbar_vendor;
     VendorAdapter vendorAdapter;
     public static GridView ShowInThis;
-  //  public static CheckBox All;
     public static TextView itemsState, pleaseWork, itemsBeenSelected;
     Button PassDataAlso;
-    final String[] snacksnames = new String[]{"Chelsea Bread", "Doughnut", "Meat Pie", "Sausage Roll", "Sharwama"};
-    int[] snacksimages = {R.drawable.c_chelsea, R.drawable.c_doughnut, R.drawable.c_meatpie, R.drawable.c_sausage, R.drawable.c_sharwama};
+    final String[] snacksnames = new String[]{"Chelsea Bread", "Doughnut", "Meat Pie", "Sausage Roll", "Egg Roll", "Fish Roll"};
+    int[] snacksimages = {R.drawable.c_chelsea, R.drawable.c_doughnut, R.drawable.c_meatpie, R.drawable.c_sausage, R.drawable.c_egg_roll, R.drawable.c_fish_roll};
 
     TextView sellerId;
 
@@ -102,14 +101,19 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
 
         app = LucidApplication.getInstance();
 
-        sellerId = (TextView) findViewById(R.id.textViewId);
+        sellerId = findViewById(R.id.textViewId);
 
-        sellerId.setText("Id No : " + app.Idtext.getText().toString() + "");
+        try {
+
+            sellerId.setText("Id No : " + app.Idtext.getText().toString() + "");
+        } catch (Exception ignored) {
+
+        }
 
         MyOkPlatesPrefences = getSharedPreferences(PREF_NICK_NAME, Context.MODE_PRIVATE);
         MyOkPlatesEditor = MyOkPlatesPrefences.edit();
 
-        PassDataAlso = (Button) findViewById(R.id.getMeNextActivity);
+        PassDataAlso = findViewById(R.id.getMeNextActivity);
 
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "deprecatedmyfoot");
@@ -123,24 +127,21 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
             getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
         }
 
-        toolbar_vendor = (Toolbar) findViewById(R.id.ToolbarVendorActivity);
+        toolbar_vendor = findViewById(R.id.ToolbarVendorActivity);
         setSupportActionBar(toolbar_vendor);
 
         getSupportActionBar().setTitle("");
 
-//        All = (CheckBox) findViewById(R.id.checkboxAll);
-//        All.setVisibility(View.GONE);
-
-        itemsState = (TextView) findViewById(R.id.itemsState);
+        itemsState = findViewById(R.id.itemsState);
         itemsState.setVisibility(View.INVISIBLE);
 
-        pleaseWork = (TextView) findViewById(R.id.selectedYet);
+        pleaseWork = findViewById(R.id.selectedYet);
         pleaseWork.setVisibility(View.INVISIBLE);
 
-        itemsBeenSelected = (TextView) findViewById(R.id.itemsBeenSelected);
+        itemsBeenSelected = findViewById(R.id.itemsBeenSelected);
         itemsBeenSelected.setVisibility(View.INVISIBLE);
 
-        ShowInThis = (GridView) findViewById(R.id.showInThis);
+        ShowInThis = findViewById(R.id.showInThis);
         ShowInThis.setOnItemClickListener(this);
 
         ShowInThis.setVisibility(View.GONE);
@@ -149,95 +150,18 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
         ShowInThis.setAdapter(vendorAdapter);
 
 
-        smoothy = (SmoothCheckBox) findViewById(R.id.smoothie);
-
-        //Use the immediate for references on what is needed to pass items from VendorActivity to FoodmenuActivity...... ie onItemCheckedStateChanged to OnItemClickListener.....
-        ShowInThis.setMultiChoiceModeListener(new GridView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                final int checkedCount = ShowInThis.getCheckedItemCount();
-                mode.setTitle(checkedCount + " Selected");
-                vendorAdapter.toggleSelection(position);
-
-                Toast.makeText(getApplicationContext(), "This is coolest", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                mode.getMenuInflater().inflate(R.menu.vendor_login_activitymenumain, menu);
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.systemSettings:
-                        break;
-                }
-                return true;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-
-            }
-        });
-
+        smoothy = findViewById(R.id.smoothie);
     }
 
     private ArrayList<Icdat> getIcdats() {
         ArrayList<Icdat> icdats = new ArrayList<>();
-        icdats.add(new Icdat(snacksnames[0], snacksimages[0], smoothy));
-        icdats.add(new Icdat(snacksnames[1], snacksimages[1], smoothy));
-        icdats.add(new Icdat(snacksnames[2], snacksimages[2], smoothy));
-        icdats.add(new Icdat(snacksnames[3], snacksimages[3], smoothy));
+        icdats.add(new Icdat(snacksnames[0], snacksimages[0], smoothy)); // Chelsea Bread
+        icdats.add(new Icdat(snacksnames[1], snacksimages[1], smoothy)); // Doughnut
+        icdats.add(new Icdat(snacksnames[2], snacksimages[2], smoothy)); // Meat Pie
+        icdats.add(new Icdat(snacksnames[3], snacksimages[3], smoothy)); // Sausage Roll
+        icdats.add(new Icdat(snacksnames[4], snacksimages[4], smoothy)); // Egg Roll
+        icdats.add(new Icdat(snacksnames[5], snacksimages[5], smoothy)); // Fish Roll
         return icdats;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.vendor_activityappbarmenu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.log_out:
-                break;
-        }
-        return true;
-    }
-
-    public void mySectionIsOver(MenuItem item) {
-        AlertDialog.Builder destroyer = new AlertDialog.Builder(this);
-        destroyer.setTitle("Log out");
-        destroyer.setMessage("This should only be done if your section is over. Are you sure?");
-        destroyer.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(VendorActivity.this, Vendor_LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        destroyer.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        destroyer.create().show();
-
     }
 
     @Override
@@ -261,41 +185,41 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
         }
 
         StyleableToast JustFooddiamonds = new StyleableToast(view.getContext(), snacksnames[position] + " " + isCheckedOrNot(checkBox), Toast.LENGTH_SHORT);
-        JustFooddiamonds.setBackgroundColor(Color.parseColor("#FF5A5F"));
-        JustFooddiamonds.setTextColor(Color.WHITE);
+        JustFooddiamonds.setBackgroundColor(Color.parseColor("#607D8B"));
+        JustFooddiamonds.setTextColor(Color.YELLOW);
         JustFooddiamonds.show();
 
 
 
-        String mealSelected = "Selected Snacks are:  ";
-
-        for (int me = 0; me < ShowInThis.getCount(); me++) {
-            if (ShowInThis.isItemChecked(me)) {
-                mealSelected += icdat.getSnackname() + ", ";
-            }
-
-        }
-     //   itemsBeenSelected.setVisibility(View.VISIBLE);
-        itemsBeenSelected.setText(mealSelected);
-
-        final int checkedCount = ShowInThis.getCheckedItemCount();
-
-        if (checkedCount < 2) {
-            pleaseWork.setText(checkedCount + " item Selected" + "");
-            vendorAdapter.toggleSelection(position);
-        } else if (checkedCount > 1) {
-            pleaseWork.setText(checkedCount + " items Selected" + "");
-            vendorAdapter.toggleSelection(position);
-        }
-        vendorAdapter.notifyDataSetChanged();
+//        String mealSelected = "Selected Snacks are:  ";
+//
+//        for (int me = 0; me < ShowInThis.getCount(); me++) {
+//            if (ShowInThis.isItemChecked(me)) {
+//                mealSelected += icdat.getSnackname() + ", ";
+//            }
+//
+//        }
+//     //   itemsBeenSelected.setVisibility(View.VISIBLE);
+//        itemsBeenSelected.setText(mealSelected);
+//
+//        final int checkedCount = ShowInThis.getCheckedItemCount();
+//
+//        if (checkedCount < 2) {
+//            pleaseWork.setText(checkedCount + " item Selected" + "");
+//            vendorAdapter.toggleSelection(position);
+//        } else if (checkedCount > 1) {
+//            pleaseWork.setText(checkedCount + " items Selected" + "");
+//            vendorAdapter.toggleSelection(position);
+//        }
+//        vendorAdapter.notifyDataSetChanged();
     }
 
     private int compareIndex(Icdat icdat){
         int ounje = -1;
-        for(int food = 0; food < app.selectedsnacks.size(); food++){
-            Icdat dweezy = (Icdat) app.selectedsnacks.get(food);
+        for(int snack = 0; snack < app.selectedsnacks.size(); snack++){
+            Icdat dweezy = (Icdat) app.selectedsnacks.get(snack);
             if(dweezy.getSnackname().equals(icdat.getSnackname())){
-                ounje = food;
+                ounje = snack;
             }
         }
         return ounje;
@@ -310,8 +234,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void OCAddorRemove(View view) {
         FragmentManager AorRmanager = getFragmentManager();
-        AddorRemove reveal = new AddorRemove();
-        reveal.show(AorRmanager, "AddorRemove");
+        UpdateItems reveal = new UpdateItems();
+        reveal.show(AorRmanager, "UpdateItems");
     }
 
     public void OCDynamicPlateCount(View v) {
@@ -322,39 +246,39 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
         final View view = inflater.inflate(R.layout.va_dynamic_platecount, null);
         builder.setView(view);
 
-        radioGroup = (RadioGroup) view.findViewById(R.id.radiohead);
+        radioGroup = view.findViewById(R.id.radiohead);
         radioGroup.setOnCheckedChangeListener(this);
 
-        oneissmalljoor = (RadioButton) view.findViewById(R.id.one);
-        twook = (RadioButton) view.findViewById(R.id.two);
-        threeok = (RadioButton) view.findViewById(R.id.three);
-        fourok = (RadioButton) view.findViewById(R.id.four);
-        fiveok = (RadioButton) view.findViewById(R.id.five);
-        sixok = (RadioButton) view.findViewById(R.id.six);
-        sevenok = (RadioButton) view.findViewById(R.id.seven);
-        eightok = (RadioButton) view.findViewById(R.id.eight);
-        nineok = (RadioButton) view.findViewById(R.id.nine);
-        tenok = (RadioButton) view.findViewById(R.id.ten);
-        elevenok = (RadioButton) view.findViewById(R.id.eleven);
-        twelveok = (RadioButton) view.findViewById(R.id.twelve);
-        thirteenok = (RadioButton) view.findViewById(R.id.thirteen);
-        fourteenok = (RadioButton) view.findViewById(R.id.fourteen);
-        fifteenok = (RadioButton) view.findViewById(R.id.fifteen);
-        sixteenok = (RadioButton) view.findViewById(R.id.sixteen);
-        seventeenok = (RadioButton) view.findViewById(R.id.seventeen);
-        eighteenok = (RadioButton) view.findViewById(R.id.eighteen);
-        nineteenok = (RadioButton) view.findViewById(R.id.nineteen);
-        twentyok = (RadioButton) view.findViewById(R.id.twenty);
-        twentyoneok = (RadioButton) view.findViewById(R.id.twentyone);
-        twentytwook = (RadioButton) view.findViewById(R.id.twentytwo);
-        twentythreeok = (RadioButton) view.findViewById(R.id.twentythree);
-        twentyfourok = (RadioButton) view.findViewById(R.id.twentyfour);
-        twentyfiveok = (RadioButton) view.findViewById(R.id.twentyfive);
-        twentysixok = (RadioButton) view.findViewById(R.id.twentysix);
-        twentysevenok = (RadioButton) view.findViewById(R.id.twentyseven);
-        twentyeightok = (RadioButton) view.findViewById(R.id.twentyeight);
-        twentynineok = (RadioButton) view.findViewById(R.id.twentynine);
-        thirtyisenoughjoor = (RadioButton) view.findViewById(R.id.thirty);
+        oneissmalljoor = view.findViewById(R.id.one);
+        twook = view.findViewById(R.id.two);
+        threeok = view.findViewById(R.id.three);
+        fourok = view.findViewById(R.id.four);
+        fiveok = view.findViewById(R.id.five);
+        sixok = view.findViewById(R.id.six);
+        sevenok = view.findViewById(R.id.seven);
+        eightok = view.findViewById(R.id.eight);
+        nineok = view.findViewById(R.id.nine);
+        tenok = view.findViewById(R.id.ten);
+        elevenok = view.findViewById(R.id.eleven);
+        twelveok = view.findViewById(R.id.twelve);
+        thirteenok = view.findViewById(R.id.thirteen);
+        fourteenok = view.findViewById(R.id.fourteen);
+        fifteenok = view.findViewById(R.id.fifteen);
+        sixteenok = view.findViewById(R.id.sixteen);
+        seventeenok = view.findViewById(R.id.seventeen);
+        eighteenok = view.findViewById(R.id.eighteen);
+        nineteenok = view.findViewById(R.id.nineteen);
+        twentyok = view.findViewById(R.id.twenty);
+        twentyoneok = view.findViewById(R.id.twentyone);
+        twentytwook = view.findViewById(R.id.twentytwo);
+        twentythreeok = view.findViewById(R.id.twentythree);
+        twentyfourok = view.findViewById(R.id.twentyfour);
+        twentyfiveok = view.findViewById(R.id.twentyfive);
+        twentysixok = view.findViewById(R.id.twentysix);
+        twentysevenok = view.findViewById(R.id.twentyseven);
+        twentyeightok = view.findViewById(R.id.twentyeight);
+        twentynineok = view.findViewById(R.id.twentynine);
+        thirtyisenoughjoor = view.findViewById(R.id.thirty);
 
         if (MyOkPlatesPrefences.getBoolean(ONE_KITCHEN_KEY_RECALL, false))
             oneissmalljoor.setChecked(true);
@@ -433,8 +357,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "One Plate per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twook.isChecked()) {
@@ -449,8 +373,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Two plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (threeok.isChecked()) {
@@ -465,8 +389,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Three plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (fourok.isChecked()) {
@@ -481,8 +405,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Four plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (fiveok.isChecked()) {
@@ -497,8 +421,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Five plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (sixok.isChecked()) {
@@ -513,8 +437,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Six plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (sevenok.isChecked()) {
@@ -529,8 +453,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Seven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (eightok.isChecked()) {
@@ -545,8 +469,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Eight plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (nineok.isChecked()) {
@@ -561,8 +485,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Nine plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (tenok.isChecked()) {
@@ -577,8 +501,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Ten plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (elevenok.isChecked()) {
@@ -593,8 +517,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Eleven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twelveok.isChecked()) {
@@ -609,8 +533,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twelve plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (thirteenok.isChecked()) {
@@ -625,8 +549,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Thirteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (fourteenok.isChecked()) {
@@ -641,8 +565,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Fourteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (fifteenok.isChecked()) {
@@ -657,8 +581,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Fifteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (sixteenok.isChecked()) {
@@ -673,8 +597,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Sixteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (seventeenok.isChecked()) {
@@ -689,8 +613,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Seventeen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (eighteenok.isChecked()) {
@@ -705,8 +629,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Eighteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (nineteenok.isChecked()) {
@@ -721,8 +645,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Nineteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentyok.isChecked()) {
@@ -737,8 +661,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twenty plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentyoneok.isChecked()) {
@@ -753,8 +677,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyone plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentytwook.isChecked()) {
@@ -769,8 +693,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentytwo plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentythreeok.isChecked()) {
@@ -785,8 +709,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentythree plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentyfourok.isChecked()) {
@@ -801,8 +725,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyfour plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentyfiveok.isChecked()) {
@@ -817,8 +741,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyfive plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentysixok.isChecked()) {
@@ -834,8 +758,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentysix plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentysevenok.isChecked()) {
@@ -850,8 +774,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyseven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentyeightok.isChecked()) {
@@ -866,8 +790,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyeight plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (twentynineok.isChecked()) {
@@ -882,8 +806,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentynine plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
                 else if (thirtyisenoughjoor.isChecked()) {
@@ -898,8 +822,8 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
                     StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Thirty plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#FF5A5F"));
-                    APlateNoSelected.setTextColor(Color.WHITE);
+                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
+                    APlateNoSelected.setTextColor(Color.YELLOW);
                     APlateNoSelected.show();
                 }
             }
@@ -926,36 +850,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#303F9F"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#FF8A65"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
 
 
                 break;
@@ -972,36 +896,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#303F9F"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#FF8A65"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.three:
@@ -1016,36 +940,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#303F9F"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#FF8A65"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.four:
@@ -1060,36 +984,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#303F9F"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#FF8A65"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.five:
@@ -1104,36 +1028,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#303F9F"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#FF8A65"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.six:
@@ -1148,36 +1072,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#303F9F"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#FF8A65"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.seven:
@@ -1192,36 +1116,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#303F9F"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#FF8A65"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.eight:
@@ -1236,36 +1160,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#303F9F"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#FF8A65"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.nine:
@@ -1280,36 +1204,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#303F9F"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#FF8A65"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.ten:
@@ -1324,36 +1248,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#303F9F"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#FF8A65"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.eleven:
@@ -1368,36 +1292,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#303F9F"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#FF8A65"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twelve:
@@ -1412,36 +1336,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#303F9F"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#FF8A65"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.thirteen:
@@ -1456,36 +1380,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#303F9F"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#FF8A65"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.fourteen:
@@ -1500,36 +1424,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#303F9F"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#FF8A65"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.fifteen:
@@ -1544,36 +1468,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#303F9F"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#FF8A65"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.sixteen:
@@ -1588,36 +1512,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#303F9F"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#FF8A65"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.seventeen:
@@ -1632,36 +1556,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#303F9F"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#FF8A65"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.eighteen:
@@ -1676,36 +1600,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#303F9F"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#FF8A65"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.nineteen:
@@ -1720,36 +1644,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#303F9F"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#FF8A65"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twenty:
@@ -1764,36 +1688,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#303F9F"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#FF8A65"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentyone:
@@ -1808,36 +1732,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#303F9F"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#FF8A65"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentytwo:
@@ -1852,36 +1776,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#303F9F"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#FF8A65"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentythree:
@@ -1896,36 +1820,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#303F9F"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#FF8A65"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentyfour:
@@ -1940,36 +1864,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#303F9F"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#FF8A65"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentyfive:
@@ -1984,36 +1908,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#303F9F"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#FF8A65"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentysix:
@@ -2028,36 +1952,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#303F9F"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#FF8A65"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentyseven:
@@ -2072,36 +1996,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#303F9F"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#FF8A65"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentyeight:
@@ -2116,36 +2040,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#303F9F"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#FF8A65"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.twentynine:
@@ -2160,36 +2084,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#303F9F"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#000000"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#FF8A65"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#00897B"));
                 break;
 
             case R.id.thirty:
@@ -2204,36 +2128,36 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                         startActivity(intent);
                     }
                 });
-                oneissmalljoor.setTextColor(Color.parseColor("#000000"));
-                twook.setTextColor(Color.parseColor("#000000"));
-                threeok.setTextColor(Color.parseColor("#000000"));
-                fourok.setTextColor(Color.parseColor("#000000"));
-                fiveok.setTextColor(Color.parseColor("#000000"));
-                sixok.setTextColor(Color.parseColor("#000000"));
-                sevenok.setTextColor(Color.parseColor("#000000"));
-                eightok.setTextColor(Color.parseColor("#000000"));
-                nineok.setTextColor(Color.parseColor("#000000"));
-                tenok.setTextColor(Color.parseColor("#000000"));
-                elevenok.setTextColor(Color.parseColor("#000000"));
-                twelveok.setTextColor(Color.parseColor("#000000"));
-                thirteenok.setTextColor(Color.parseColor("#000000"));
-                fourteenok.setTextColor(Color.parseColor("#000000"));
-                fifteenok.setTextColor(Color.parseColor("#000000"));
-                sixteenok.setTextColor(Color.parseColor("#000000"));
-                seventeenok.setTextColor(Color.parseColor("#000000"));
-                eighteenok.setTextColor(Color.parseColor("#000000"));
-                nineteenok.setTextColor(Color.parseColor("#000000"));
-                twentyok.setTextColor(Color.parseColor("#000000"));
-                twentyoneok.setTextColor(Color.parseColor("#000000"));
-                twentytwook.setTextColor(Color.parseColor("#000000"));
-                twentythreeok.setTextColor(Color.parseColor("#000000"));
-                twentyfourok.setTextColor(Color.parseColor("#000000"));
-                twentyfiveok.setTextColor(Color.parseColor("#000000"));
-                twentysixok.setTextColor(Color.parseColor("#000000"));
-                twentysevenok.setTextColor(Color.parseColor("#000000"));
-                twentyeightok.setTextColor(Color.parseColor("#000000"));
-                twentynineok.setTextColor(Color.parseColor("#000000"));
-                thirtyisenoughjoor.setTextColor(Color.parseColor("#303F9F"));
+                oneissmalljoor.setTextColor(Color.parseColor("#00897B"));
+                twook.setTextColor(Color.parseColor("#00897B"));
+                threeok.setTextColor(Color.parseColor("#00897B"));
+                fourok.setTextColor(Color.parseColor("#00897B"));
+                fiveok.setTextColor(Color.parseColor("#00897B"));
+                sixok.setTextColor(Color.parseColor("#00897B"));
+                sevenok.setTextColor(Color.parseColor("#00897B"));
+                eightok.setTextColor(Color.parseColor("#00897B"));
+                nineok.setTextColor(Color.parseColor("#00897B"));
+                tenok.setTextColor(Color.parseColor("#00897B"));
+                elevenok.setTextColor(Color.parseColor("#00897B"));
+                twelveok.setTextColor(Color.parseColor("#00897B"));
+                thirteenok.setTextColor(Color.parseColor("#00897B"));
+                fourteenok.setTextColor(Color.parseColor("#00897B"));
+                fifteenok.setTextColor(Color.parseColor("#00897B"));
+                sixteenok.setTextColor(Color.parseColor("#00897B"));
+                seventeenok.setTextColor(Color.parseColor("#00897B"));
+                eighteenok.setTextColor(Color.parseColor("#00897B"));
+                nineteenok.setTextColor(Color.parseColor("#00897B"));
+                twentyok.setTextColor(Color.parseColor("#00897B"));
+                twentyoneok.setTextColor(Color.parseColor("#00897B"));
+                twentytwook.setTextColor(Color.parseColor("#00897B"));
+                twentythreeok.setTextColor(Color.parseColor("#00897B"));
+                twentyfourok.setTextColor(Color.parseColor("#00897B"));
+                twentyfiveok.setTextColor(Color.parseColor("#00897B"));
+                twentysixok.setTextColor(Color.parseColor("#00897B"));
+                twentysevenok.setTextColor(Color.parseColor("#00897B"));
+                twentyeightok.setTextColor(Color.parseColor("#00897B"));
+                twentynineok.setTextColor(Color.parseColor("#00897B"));
+                thirtyisenoughjoor.setTextColor(Color.parseColor("#FF8A65"));
                 break;
         }
     }
@@ -2557,10 +2481,10 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onBackPressed() {
-        confirmExitDialog();
+        logOut();
     }
 
-    public void confirmExitDialog() {
+    public void logOut() {
         AlertDialog.Builder destroyer = new AlertDialog.Builder(this);
         destroyer.setTitle("Log out");
         destroyer.setMessage("This should only be done if your section is over. Are you sure?");
@@ -2568,6 +2492,44 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                Intent intent = new Intent(VendorActivity.this, Vendor_LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        destroyer.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        destroyer.create().show();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.vendor_activityappbarmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.log_out:
+                break;
+        }
+        return true;
+    }
+
+    public void mySectionIsOver(MenuItem item) {
+        AlertDialog.Builder destroyer = new AlertDialog.Builder(this);
+        destroyer.setTitle("Log out");
+        destroyer.setMessage("This should only be done if your section is over. Are you sure?");
+        destroyer.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(VendorActivity.this, Vendor_LoginActivity.class);
                 startActivity(intent);
             }

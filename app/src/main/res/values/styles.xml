@@ -15,7 +15,7 @@
         <item name="android:colorPrimaryDark">@color/colorSecondaryDark</item>
         <item name="android:colorAccent">@color/colorCcCent</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
-        <item name="android:textColorSecondary">@color/EachToolbarIconColor</item>
+        <item name="android:textColorSecondary">@color/VendorLoginToolbarIconColor</item>
 
     </style>
 
@@ -28,7 +28,7 @@
         <item name="colorPrimaryDark">@color/colorNurseryDark</item>
         <item name="colorAccent">@color/colorDcCent</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
-        <item name="android:textColorSecondary">@color/EachToolbarIconColor</item>
+        <item name="android:textColorSecondary">@color/SnacksToolbarIconColor</item>
     </style>
 
     <style name="ServingActivity" parent="Theme.AppCompat.Light.NoActionBar">

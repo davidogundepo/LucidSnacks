@@ -5,9 +5,9 @@
         <shape android:shape="rectangle">
 
             <corners android:radius="20dp" />
-            <stroke android:color="#8432e4de" />
+            <stroke android:color="@color/ChosenPlateBackGround" />
 
-            <solid android:color="#8432e4de"/>
+            <solid android:color="@color/ChosenPlateBackGround"/>
 
             <size android:width="40dp"
                 android:height="40dp" />

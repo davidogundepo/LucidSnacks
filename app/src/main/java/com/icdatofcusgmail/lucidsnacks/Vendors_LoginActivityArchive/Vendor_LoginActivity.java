@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.ColorRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.easyandroidanimations.library.BounceAnimation;
+import com.easyandroidanimations.library.ShakeAnimation;
 import com.icdatofcusgmail.lucidsnacks.LucidApplication;
 import com.icdatofcusgmail.lucidsnacks.MyCountlesston;
 import com.icdatofcusgmail.lucidsnacks.R;
@@ -38,11 +42,13 @@ public class Vendor_LoginActivity extends AppCompatActivity {
 
     Toolbar toolbar_vendor_login;
     public EditText MyIdNo;
-    TextView myIDWitness;
-    TextView VendorMotivation;
+    TextView myIDWitness, IDInvisible;
     ImageButton ConfirmID;
-    String IDCrossCheck_url = "http://192.168.2.75/my_id_confirmed.php";
     AlertDialog.Builder cicatrixElevation;
+
+    TextClock ShakeDaTime;
+
+    String IDCrossCheck_url = "http://128.0.1.2/vendor_login.php";
 
     LucidApplication app;
 
@@ -51,23 +57,48 @@ public class Vendor_LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor__login);
 
+        ShakeDaTime = findViewById(R.id.VendorLogin_textClock);
+        ShakeDaTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ShakeAnimation(ShakeDaTime).animate();
+            }
+        });
+
+
+        new BounceAnimation(ShakeDaTime).setBounceDistance(50)
+                .setBounceDistance(50)
+                .setDuration(1500)
+                .animate();
+
         app = LucidApplication.getInstance();
 
         cicatrixElevation = new AlertDialog.Builder(Vendor_LoginActivity.this);
 
-        VendorMotivation = (TextView) findViewById(R.id.RandomMotivationForVendor);
+        MyIdNo = findViewById(R.id.idNumber);
+        myIDWitness = findViewById(R.id.RandomMotivationNVendorName);
 
-        MyIdNo = (EditText) findViewById(R.id.idNumber);
-        myIDWitness = (TextView) findViewById(R.id.IDWitness);
-        myIDWitness.setVisibility(View.GONE);
-        ConfirmID = (ImageButton) findViewById(R.id.confirmID);
+        myIDWitness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ShakeAnimation(myIDWitness).animate();
+            }
+        });
+
+        new BounceAnimation(myIDWitness).setBounceDistance(50)
+                .setBounceDistance(50)
+                .setDuration(1500)
+                .animate();
+
+        IDInvisible = findViewById(R.id.IDInvisibleWitnessIDNumber);
+        ConfirmID = findViewById(R.id.confirmID);
 
         ConfirmID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (MyIdNo.getText().toString().isEmpty()) {
                     StyleableToast EmptyFields = new StyleableToast(Vendor_LoginActivity.this, "Please enter your Id Number", Toast.LENGTH_SHORT).spinIcon();
-                    EmptyFields.setBackgroundColor(Color.parseColor("#FF5A5F"));
+                    EmptyFields.setBackgroundColor(Color.parseColor("#5D4037"));
                     EmptyFields.setTextColor(Color.WHITE);
                     EmptyFields.show();
                 } else {
@@ -80,17 +111,20 @@ public class Vendor_LoginActivity extends AppCompatActivity {
                                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                                         String code = jsonObject.getString("code");
                                         switch (code) {
-                                            case "id_failed":
+                                            case "unsuccessful_move":
                                                 cicatrixElevation.setTitle("No Match");
-                                                elevateCicatrix(jsonObject.getString("message"));
+                                                elevateCicatrix(jsonObject.getString("rejection_message"));
                                                 MyIdNo.setText("");
-                                                VendorMotivation.setText("");
-                                                myIDWitness.setVisibility(View.GONE);
+                                                myIDWitness.setText("");
+                                                IDInvisible.setVisibility(View.GONE);
                                                 break;
-                                            case "id_success":
-                                                myIDWitness.setVisibility(View.INVISIBLE);
-                                                myIDWitness.setText(jsonObject.getString("seller_id"));
-                                                VendorMotivation.setText(jsonObject.getString("seller_name"));
+                                            case "successful_access":
+                                                myIDWitness.setVisibility(View.VISIBLE);
+                                                myIDWitness.setText(jsonObject.getString("seller_name"));
+                                                myIDWitness.setTextColor(Color.LTGRAY);
+                                                myIDWitness.setTextSize(80);
+                                                IDInvisible.setText(jsonObject.getString("seller_id"));
+                                                IDInvisible.setVisibility(View.INVISIBLE);
                                                 app.sellerOruko = new Bundle();
                                                 app.sellerOruko.putString("seller_name", jsonObject.getString("seller_name"));
                                                 app.sellerOruko.putString("seller_id", jsonObject.getString("seller_id"));
@@ -125,7 +159,7 @@ public class Vendor_LoginActivity extends AppCompatActivity {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> param = new HashMap<String, String>();
                             param.put("seller_id", MyIdNo.getText().toString());
-                            param.put("seller_name", VendorMotivation.getText().toString());
+                            param.put("seller_name", myIDWitness.getText().toString());
                             return param;
                         }
                     };
@@ -134,7 +168,7 @@ public class Vendor_LoginActivity extends AppCompatActivity {
             }
         });
 
-        toolbar_vendor_login = (Toolbar) findViewById(R.id.ToolbarVendor_LoginActivity);
+        toolbar_vendor_login = findViewById(R.id.ToolbarVendor_LoginActivity);
         setSupportActionBar(toolbar_vendor_login);
 
         getSupportActionBar().setTitle("");
@@ -166,7 +200,7 @@ public class Vendor_LoginActivity extends AppCompatActivity {
             });
             Emptiness.create().show();
         }
-        else if (myIDWitness.getVisibility() == View.GONE) {
+        else if (IDInvisible.getVisibility() == View.GONE) {
             AlertDialog.Builder BlackList = new AlertDialog.Builder(this);
             BlackList.setTitle("Id is not Confirmed");
             BlackList.setMessage("Please check your Id there's no match for that.");
@@ -181,15 +215,15 @@ public class Vendor_LoginActivity extends AppCompatActivity {
         else {
             AlertDialog.Builder HomelandSecurity = new AlertDialog.Builder(this);
             HomelandSecurity.setTitle("Confirm Id!");
-            HomelandSecurity.setMessage("By pressing YES you login as 'Id " + myIDWitness.getText().toString() + "' with the Name as '" + VendorMotivation.getText().toString() + "'. \nAre you the described one?");
+            HomelandSecurity.setMessage("By pressing YES you login as 'Id " + IDInvisible.getText().toString() + "' with the Name as '" + myIDWitness.getText().toString() + "'. \nAre you the described one?");
             HomelandSecurity.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
                     Intent IdConfirmed = new Intent(Vendor_LoginActivity.this, VendorActivity.class);
                     IdConfirmed.putExtras(app.sellerOruko);
-                    app.Nametext = VendorMotivation;
-                    app.Idtext = myIDWitness;
+                    app.Nametext = myIDWitness;
+                    app.Idtext = IDInvisible;
                     startActivity(IdConfirmed);
                 }
             });

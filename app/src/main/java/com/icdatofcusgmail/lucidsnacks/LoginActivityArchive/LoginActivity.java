@@ -44,6 +44,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -60,10 +61,12 @@ public class LoginActivity extends AppCompatActivity {
     public EditText PasswordField;
     Button login;
     public ImageButton clearAllUsername, clearAllPin;
-    String turnUp_url = "http://192.168.2.75/my_login_okay.php";
+
     AlertDialog.Builder quantumElevation;
     Date whoShouldIDate;
     TextView actuallyTime;
+
+    String turnUp_url = "http://128.0.1.2/my_login_okay.php";
 
     LucidApplication app_real;
 
@@ -87,20 +90,20 @@ public class LoginActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
         }
 
-        UsernameField = (EditText) findViewById(R.id.Usernamefield);
-        PasswordField = (EditText) findViewById(R.id.Passwordfield);
+        UsernameField = findViewById(R.id.Usernamefield);
+        PasswordField = findViewById(R.id.Passwordfield);
 
-        login = (Button) findViewById(R.id.loginbutton);
+        login = findViewById(R.id.loginbutton);
 
-        clearAllUsername = (ImageButton) findViewById(R.id.clearAllUsername);
-        clearAllPin = (ImageButton) findViewById(R.id.clearAllPin);
+        clearAllUsername = findViewById(R.id.clearAllUsername);
+        clearAllPin = findViewById(R.id.clearAllPin);
         clearAllUsername.setVisibility(View.GONE);
         clearAllPin.setVisibility(View.GONE);
 
-        reporterPassword = (TextView) findViewById(R.id.reportPassWord);
-        reporterUsername = (TextView) findViewById(R.id.reportUserName);
+        reporterPassword = findViewById(R.id.reportPassWord);
+        reporterUsername = findViewById(R.id.reportUserName);
 
-        actuallyTime = (TextView) findViewById(R.id.HiddenCurrentTyme);
+        actuallyTime = findViewById(R.id.HiddenCurrentTyme);
         actuallyTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,12 +111,23 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        whoShouldIDate = new Date(System.currentTimeMillis());
-        SimpleDateFormat notComplexFormat = new SimpleDateFormat("yyyy - MM - dd", Locale.ENGLISH);
-        String strrrinng = notComplexFormat.format(whoShouldIDate);
-        actuallyTime.setText(strrrinng);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        textRandom = (TextView) findViewById(R.id.RandomMotivation);
+        month = month + 1;
+
+        String lenient = year + " - " + month + " - " + day;
+
+        actuallyTime.setText(lenient);
+
+        whoShouldIDate = new Date(System.currentTimeMillis());
+//        SimpleDateFormat notComplexFormat = new SimpleDateFormat("yyyy - MM - dd", Locale.ENGLISH);
+//        String strrrinng = notComplexFormat.format(whoShouldIDate);
+//        actuallyTime.setText(strrrinng);
+
+        textRandom = findViewById(R.id.RandomMotivation);
         textRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -483,6 +497,7 @@ public class LoginActivity extends AppCompatActivity {
         this.arrayRandom.add("Work Hard in Silence, Let success make the Noise!");
         this.arrayRandom.add("Do it for the people who want to see you fail.");
         this.arrayRandom.add("Stop focusing on how stressed you are and remember how blessed you are.");
+        this.arrayRandom.add("Life is not hard, it's simple. \n It's not just fair");
         this.arrayRandom.add("Don't be afraid to fail. Be afraid not to try.");
         this.arrayRandom.add("Work until you no longer have to  introduce yourself.");
         this.arrayRandom.add("I already know what giving up feels like. \n I want to see what happens if I don't");
@@ -506,6 +521,7 @@ public class LoginActivity extends AppCompatActivity {
         this.arrayRandom.add("Be stubborn about your goals. Flexible about your methods.");
         this.arrayRandom.add("I always wondered why somebody didn't do something about that, then I realized I am somebody.");
         this.arrayRandom.add("If you don't run your own life, somebody else will.");
+        this.arrayRandom.add("all of us are self made but only the successful will admit it");
 
         PasswordField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -527,9 +543,9 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (no.length() < 4)
                     reporterPassword.setText("" + "Short" + "");
                 if (no.length()>4)
-                    reporterPassword.setText("" + "Almost" + "");
-                else if (no.length()>=8)
-                    reporterPassword.setText("" + "Enough Joor Aseju" + "");
+                    reporterPassword.setText("" + "All yours now" + "");
+//                else if (no.length()>=8)
+//                    reporterPassword.setText("" + "Enough Joor Aseju" + "");
             }
         });
 
@@ -575,14 +591,11 @@ public class LoginActivity extends AppCompatActivity {
         String[] weddingRing = getIntent().getStringArrayExtra("diamond");
         final Parcelable[] parcel = getIntent().getParcelableArrayExtra("selectedItems");
 
-        final Button button = (Button) findViewById(R.id.loginbutton);
+        final Button button = findViewById(R.id.loginbutton);
 
         Animation animation = new AlphaAnimation(1.0f, 0.0f);
         animation.setDuration(1000);
         button.startAnimation(animation);
-
-        final String UsernameContent = UsernameField.getText().toString();
-        final String UsernameString = UsernameContent.substring(UsernameContent.indexOf(".")+1);
 
         if (UsernameField.getText().toString().equals("admin") && PasswordField.getText().toString().equals("1234")) {
 
@@ -591,12 +604,12 @@ public class LoginActivity extends AppCompatActivity {
             app.allinsnackcounter = 0;
 
             StyleableToast VeriefiedKorQ = new StyleableToast(LoginActivity.this, "Welcome " + UsernameField.getText().toString(), Toast.LENGTH_SHORT).spinIcon();
-            VeriefiedKorQ.setBackgroundColor(Color.parseColor("#FF5A5F"));
+            VeriefiedKorQ.setBackgroundColor(Color.parseColor("#5D4037"));
             VeriefiedKorQ.setTextColor(Color.WHITE);
             VeriefiedKorQ.show();
 
             Intent outTent = new Intent(getApplicationContext(), SnacksmenuActivity.class);
-            Bundle bundle = new Bundle();
+            Bundle bundle = new Bundle();                         
             bundle.putString("king", UsernameField.getText().toString());
             outTent.putExtra("selectedItems", parcel);
             outTent.putExtra("diamond", weddingRing);
@@ -620,21 +633,27 @@ public class LoginActivity extends AppCompatActivity {
             dialog.show();
 
             StyleableToast EmptyFields = new StyleableToast(this, "Please enter your Credentials", Toast.LENGTH_SHORT).spinIcon();
-            EmptyFields.setBackgroundColor(Color.parseColor("#FF5A5F"));
+            EmptyFields.setBackgroundColor(Color.parseColor("#5D4037"));
             EmptyFields.setTextColor(Color.WHITE);
             EmptyFields.show();
         } else if (UsernameField.getText().toString().isEmpty()) {
             StyleableToast EmptyField = new StyleableToast(this, "Please enter your Username", Toast.LENGTH_SHORT).spinIcon();
-            EmptyField.setBackgroundColor(Color.parseColor("#FF5A5F"));
+            EmptyField.setBackgroundColor(Color.parseColor("#5D4037"));
             EmptyField.setTextColor(Color.WHITE);
             EmptyField.show();
         } else if (PasswordField.getText().toString().isEmpty()) {
             StyleableToast EmptyField = new StyleableToast(this, "Please enter your Password", Toast.LENGTH_SHORT).spinIcon();
-            EmptyField.setBackgroundColor(Color.parseColor("#FF5A5F"));
+            EmptyField.setBackgroundColor(Color.parseColor("#5D4037"));
             EmptyField.setTextColor(Color.WHITE);
             EmptyField.show();
         }
         else {
+
+            final String UsernameContent = UsernameField.getText().toString();
+            String usernameString = UsernameContent.substring(UsernameContent.indexOf(".")+1);
+            String Ai = usernameString.substring(0,1).toUpperCase();
+            String kay = usernameString.substring(1).toLowerCase();
+            final String Username = Ai+kay;
 
             LucidApplication app = LucidApplication.getInstance();
             app.prev.clear();
@@ -658,19 +677,26 @@ public class LoginActivity extends AppCompatActivity {
                                         break;
                                     case "short_balance":
                                         quantumElevation.setTitle("Short Balance");
-                                        exhibitElevation(jsonObject.getString("balance_message"));
+                                        exhibitElevation(jsonObject.getString("short_balance_message"));
                                         break;
                                     default:
                                         Intent serverTent = new Intent(LoginActivity.this, SnacksmenuActivity.class);
                                         Bundle ICDAT = new Bundle();
                                         ICDAT.putString("name", jsonObject.getString("name"));
+                                        ICDAT.putString("email", jsonObject.getString("email"));
                                         ICDAT.putString("accountbalance", jsonObject.getString("accountbalance"));
+                                        ICDAT.putString("sex", jsonObject.getString("sex"));
+                                        ICDAT.putString("department", jsonObject.getString("department"));
+                                        ICDAT.putString("level", jsonObject.getString("level"));
+                                        ICDAT.putString("d_n_m", jsonObject.getString("d_n_m"));
                                         ICDAT.putString("image", jsonObject.getString("image"));
-                                        ICDAT.putString("king", UsernameString);
+                                        ICDAT.putString("last_seen_accept", jsonObject.getString("last_seen_accept"));
+                                        ICDAT.putString("king", Username);
                                         ICDAT.putString("kingDavid", UsernameContent);
+                                        ICDAT.putString("time", actuallyTime.getText().toString());
                                         serverTent.putExtra("diamond", engagementRing);
-                                        StyleableToast VeriefiedKorQ = new StyleableToast(LoginActivity.this, "Welcome " + UsernameString, Toast.LENGTH_SHORT).spinIcon();
-                                        VeriefiedKorQ.setBackgroundColor(Color.parseColor("#FF5A5F"));
+                                        StyleableToast VeriefiedKorQ = new StyleableToast(LoginActivity.this, "Welcome " + Username, Toast.LENGTH_SHORT).spinIcon();
+                                        VeriefiedKorQ.setBackgroundColor(Color.parseColor("#5D4037"));
                                         VeriefiedKorQ.setTextColor(Color.WHITE);
                                         VeriefiedKorQ.show();
                                         serverTent.putExtras(ICDAT);

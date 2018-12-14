@@ -22,23 +22,44 @@
     <!-- Below For The Activities -->
 
     <style name="Vendor_LoginActivity" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/colorSecondary</item>
-        <item name="android:colorPrimaryDark">@color/colorSecondaryDark</item>
-        <item name="android:colorAccent">@color/colorCcCent</item>
+        <item name="android:colorPrimary">@color/colorUniversity</item>
+        <item name="android:colorPrimaryDark">@color/colorUniversityDark</item>
+        <item name="colorAccent">@color/colorEcCent</item>
+        <item name="android:textColor">@color/VendorLoginName.BackgroundOne</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
-        <item name="android:textColorSecondary">@color/colorCcCent</item>
+        <item name="android:textColorPrimary">@color/colorUniversity</item>
+        <item name="android:textColorSecondary">@color/VendorLoginToolbarIconColor</item>
+        <item name="android:actionOverflowButtonStyle">@style/Vendor_LoginActivity.Overflow</item>
     </style>
+
+
+    <style name="Vendor_LoginActivity.Overflow">
+        <item name="android:src">@drawable/a_vendorlogin_activity_overflowmenu_btn</item>
+    </style>
+
 
     <style name="VendorActivity" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorSecondary</item>
         <item name="android:colorPrimaryDark">@color/colorSecondaryDark</item>
-        <item name="android:colorAccent">@color/colorCcCent</item>
+        <item name="android:colorAccent">@color/colorCcCentTwo</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
-        <item name="android:textColorSecondary">@color/colorCcCent</item>
+        <item name="android:textColor">@color/Vendor.Color</item>
+        <item name="android:textColorPrimary">@color/colorCcCent</item>
+        <item name="android:textColorSecondary">@color/VendorToolbarIconColor</item>
+        <item name="android:actionOverflowButtonStyle">@style/VendorActivity.Overflow</item>
+    </style>
+
+    <style name="VendorActivity.Overflow">
+        <item name="android:src">@drawable/a_vendor_activity_overflowmenu_btn</item>
     </style>
 
     <style name="LoginActivity" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:navigationBarColor">@color/LoginColor.Title</item>
+        <item name="android:colorPrimary">@color/colorUniversity</item>
+        <item name="android:colorPrimaryDark">@color/colorUniversityDark</item>
+        <item name="android:colorAccent">@color/colorEcCent</item>
+        <item name="android:textColor">@color/VendorLoginName.BackgroundOne</item>
+        <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
+        <item name="android:textColorPrimary">@color/colorUniversity</item>
     </style>
 
     <style name="SnacksmenuActivity" parent="Theme.AppCompat.Light.NoActionBar">
@@ -46,11 +67,20 @@
         <item name="colorPrimaryDark">@color/colorNurseryDark</item>
         <item name="colorAccent">@color/colorDcCent</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
-        <item name="android:textColorSecondary">@color/EachToolbarIconColor</item>
+        <item name="android:textColorSecondary">@color/SnacksToolbarIconColor</item>
+        <item name="android:textColor">@color/SnackBarTextColor</item>
+        <item name="android:textColorPrimary">@color/TextColor</item>
+        <item name="android:actionOverflowButtonStyle">@style/SnacksmenuActivity.Overflow</item>
+    </style>
+
+    <style name="SnacksmenuActivity.Overflow">
+        <item name="android:src">@drawable/a_snacksmenu_activity_overflowmenu_btn</item>
     </style>
 
     <style name="ServingActivity" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
+        <item name="android:textColor">@color/ColorText</item>
+        <item name="android:textColorPrimary">@color/TextColorr</item>
     </style>
 
     <style name="Checkbox">

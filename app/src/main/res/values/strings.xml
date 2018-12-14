@@ -3,7 +3,7 @@
 
     <string name="display_items">ITEMS</string>
     <string name="goto_login">DONE</string>
-    <string name="done">SendData</string>
+    <string name="done">Buy</string>
     <string name="cancel">Cancel</string>
     <string name="okay">Okay</string>
     <string name="WelcomeSweet">Welcome</string>
@@ -56,8 +56,8 @@
     <string name="ninthchosendeleltebuttoncontentv21_9">NinthchosendeleltebuttonCONTENT</string>
     <string name="tenthchosendeletebuttoncontentv21_10">TenthchosendeletebuttonCONTENT</string>
     <string name="purchasebutton_snackmenuFragment4_snackmenuActivity">Purchase</string>
-    <string name="plate_count_snackmenuFragment4_snackmenuActivityv21">Plate Count</string>
-    <string name="plate_count_snackmenuFragment4_snackmenuActvity">Plate Count</string>
+    <string name="auto_bio_snackmenuFragment4_snackmenuActivity21">Auto Bio</string>
+    <string name="auto_bio_snackmenuFragment4_snackmenuActvity">Auto Bio</string>
     <string name="calc_space_Counter_snackmenuFragment5_snackmenuActivityv21">Calc. Space</string>
     <string name="calc_space_Counter_snackmenuFragment5_snackmenuActivity">Calc. Space</string>
     <string name="one_plate_only_Dynamic_Platecount__VendorActivity_1">One Plate Only</string>
@@ -114,6 +114,7 @@
     <string name="shut_down_lucid">Shut Down</string>
     <string name="confirmID">Id N</string>
     <string name="clearall">Clear All</string>
+    <string name="PlateCountNo">1</string>
 
     <string-array name="AorR">
 

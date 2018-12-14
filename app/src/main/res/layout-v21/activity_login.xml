@@ -9,7 +9,9 @@
     android:background="@drawable/c_loginactivity">
 
     <LinearLayout
-        android:layout_margin="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/loginactivity_motivationlayoutcolour"
@@ -22,20 +24,20 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:textSize="25sp"
-            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:textColor="@color/HelloAmazingLogin"
             android:textAlignment="center"
             android:id="@+id/RandomMotivation" />
 
     </LinearLayout>
 
     <TextView
-        android:text="The time is"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        android:textColor="@color/ClockColor"
         android:textAlignment="center"
         android:id="@+id/HiddenCurrentTyme"
         android:layout_below="@+id/linearLayout"
@@ -48,12 +50,12 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/Usernamefield"
-        android:drawableStart="@drawable/a_username"
+        android:drawableStart="@drawable/a_username_b"
         android:drawablePadding="10dp"
         android:width="300dp"
         android:paddingStart="10dp"
         android:paddingEnd="20dp"
-        android:background="#FFFFFF"
+        android:background="@color/EditTextColorLogin"
         android:hint="@string/icdat_christ"
         app:animationType="fromRight"
         app:animateCursor="true"
@@ -71,8 +73,8 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/Passwordfield"
-        android:background="#FFFFFF"
-        android:drawableStart="@drawable/a_pin"
+        android:background="@color/EditTextColorLogin"
+        android:drawableStart="@drawable/a_pin_b"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:hint="@string/pin_4_digits"
@@ -87,7 +89,7 @@
         android:text="@string/access"
         android:id="@+id/loginbutton"
         android:onClick="AccessifCorrect"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/LoginColor.Access"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:textSize="20sp"
@@ -101,6 +103,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/not_entered"
+        android:textColor="@color/EditTextStatus"
         android:id="@+id/reportPassWord"
         android:layout_marginTop="54dp"
         android:layout_below="@+id/Usernamefield"
@@ -112,6 +115,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/not_entered2"
+        android:textColor="@color/EditTextStatus"
         android:id="@+id/reportUserName"
         android:layout_marginBottom="49dp"
         android:layout_above="@+id/reportPassWord"
@@ -120,23 +124,23 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_loginedittextclearer"
+        android:src="@drawable/a_loginedittextclearer_b"
         android:id="@+id/clearAllUsername"
         android:layout_alignTop="@+id/Usernamefield"
         android:layout_toEndOf="@+id/Usernamefield"
         android:layout_alignBottom="@+id/Usernamefield"
-        android:background="#FFFFFF"
+        android:background="@color/ConfirmIDColorLogin"
         android:contentDescription="@string/clearalll" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_loginedittextclearer"
+        android:src="@drawable/a_loginedittextclearer_b"
         android:id="@+id/clearAllPin"
         android:layout_below="@+id/Usernamefield"
         android:layout_toEndOf="@+id/Passwordfield"
         android:layout_alignBottom="@+id/Passwordfield"
-        android:background="#FFFFFF"
+        android:background="@color/ConfirmIDColorLogin"
         android:contentDescription="@string/clearall" />
 
 </RelativeLayout>

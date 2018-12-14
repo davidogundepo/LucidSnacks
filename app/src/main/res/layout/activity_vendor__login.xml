@@ -16,7 +16,9 @@
     </include>
 
     <LinearLayout
-        android:layout_margin="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/loginactivity_motivationlayoutcolour"
@@ -30,9 +32,9 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="40sp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/HelloAmazing"
             android:textAlignment="center"
-            android:id="@+id/RandomMotivationForVendor" />
+            android:id="@+id/RandomMotivationNVendorName" />
 
     </LinearLayout>
 
@@ -44,20 +46,20 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/idNumber"
-        android:drawableStart="@drawable/a_username"
+        android:drawableStart="@drawable/a_username_b"
         android:drawablePadding="10dp"
         android:width="300dp"
         android:paddingStart="10dp"
         android:paddingEnd="20dp"
-        android:background="#FFFFFF"
+        android:background="@color/EditTextColor"
         android:hint="@string/vendor_idnumber"
         app:animationType="fromRight"
         app:animateCursor="true"
         app:animateTextClear="true"
         android:textSize="25sp"
-        android:layout_below="@+id/linearLayout2"
+        android:layout_above="@+id/IDbutton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="314dp" />
+        android:layout_marginBottom="357dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -65,7 +67,7 @@
         android:text="@string/access"
         android:id="@+id/IDbutton"
         android:onClick="IDCinfirmed"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/AccessButtonTextColor"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:textSize="20sp"
@@ -79,10 +81,10 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_id_confirmed"
-        android:id="@+id/clearAllID"
-        android:background="#FFFFFF"
-        android:contentDescription="@string/confirmID"
+        android:src="@drawable/a_id_confirmed_b"
+        android:id="@+id/confirmID"
+        android:background="@color/ConfirmIDColor"
+        android:contentDescription="@string/parseVendorId"
         android:layout_alignBottom="@+id/idNumber"
         android:layout_toEndOf="@+id/idNumber"
         android:layout_alignTop="@+id/idNumber" />
@@ -90,16 +92,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/id_s_name_will_display_here_Vendor_Login_Activity"
+        android:text="100"
+        android:visibility="gone"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:id="@+id/IDWitness"
+        android:id="@+id/IDInvisibleWitnessIDNumber"
         android:textColor="#FFFFFF"
         android:layout_marginTop="82dp"
         android:layout_below="@+id/idNumber"
         android:layout_alignStart="@+id/idNumber"
         android:layout_alignEnd="@+id/confirmID" />
 
+    <TextClock
+        android:id="@+id/VendorLogin_textClock"
+        android:format12Hour="h:mm:ss a"
+        android:textSize="40sp"
+        android:text="nice"
+        android:textColor="@color/TimeWatcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="149dp" />
 
 </RelativeLayout>

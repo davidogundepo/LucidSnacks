@@ -23,11 +23,8 @@ public class ServingActivity extends AppCompatActivity {
 
     PowerManager.WakeLock wakeLock;
     TextView textViewun, textViewdo, textViewtrois, textViewquartz, textViewfive, textViewsix, textViewsept, textVieweight, textViewnous, textViewten, textViewPlateorPark;
-    TextView textView, textView2nd, textView3rd, textView4th, textView5th, textView6th, textView7th, textView8th, textView9th, textView10th;
     TextView pleaseServeMe;
     LucidApplication app;
-
-    String whichName, firstName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,47 +45,56 @@ public class ServingActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
         }
 
-        pleaseServeMe = (TextView) findViewById(R.id.serveMePlease);
+        pleaseServeMe = findViewById(R.id.serveMePlease);
 
-        whichName = app.Nametext.getText().toString();
-        firstName = whichName.substring(whichName.indexOf(""), whichName.indexOf(" "));
+//        whichName = app.Nametext.getText().toString();
+//        firstName = whichName.substring(whichName.indexOf(""), whichName.indexOf(" "));
+//
+//
+//        Bundle SecondParcel = getIntent().getExtras();
+//        pleaseServeMe.setText(firstName +", please serve " + SecondParcel.getString("prince") + " the following:" );
 
 
-        Bundle SecondParcel = getIntent().getExtras();
-        pleaseServeMe.setText(firstName +", please serve " + SecondParcel.getString("prince") + " the following:" );
 
-        textViewun = (TextView) findViewById(R.id.plate1);
+        Intent SecondParcel = getIntent();
+        String registrar = SecondParcel.getStringExtra("prince");
+
+        String azubike = registrar.replace("Welcome, ","").trim();
+
+        String Azubike = azubike.substring(0,1).toUpperCase() + azubike.substring(1).toLowerCase();
+
+        String maero_delta = app.Nametext.getText().toString();
+        String maero = maero_delta.substring(maero_delta.indexOf(""), maero_delta.indexOf(" "));
+        String Maero = maero.substring(0,1).toUpperCase() + maero.substring(1).toLowerCase();
+
+        pleaseServeMe.setText(Maero + " please serve " + Azubike + " the following:" );
+
+
+        textViewun = findViewById(R.id.plate1);
         textViewun.setVisibility(View.GONE);
-        textViewdo = (TextView) findViewById(R.id.plate2);
+        textViewdo = findViewById(R.id.plate2);
         textViewdo.setVisibility(View.GONE);
-        textViewtrois = (TextView) findViewById(R.id.plate3);
+        textViewtrois = findViewById(R.id.plate3);
         textViewtrois.setVisibility(View.GONE);
-        textViewquartz = (TextView) findViewById(R.id.plate4);
+        textViewquartz = findViewById(R.id.plate4);
         textViewquartz.setVisibility(View.GONE);
-        textViewfive = (TextView) findViewById(R.id.plate5);
+        textViewfive = findViewById(R.id.plate5);
         textViewfive.setVisibility(View.GONE);
-        textViewsix = (TextView) findViewById(R.id.plate6);
+        textViewsix = findViewById(R.id.plate6);
         textViewsix.setVisibility(View.GONE);
-        textViewsept = (TextView) findViewById(R.id.plate7);
+        textViewsept = findViewById(R.id.plate7);
         textViewsept.setVisibility(View.GONE);
-        textVieweight = (TextView) findViewById(R.id.plate8);
+        textVieweight = findViewById(R.id.plate8);
         textVieweight.setVisibility(View.GONE);
-        textViewnous = (TextView) findViewById(R.id.plate9);
+        textViewnous = findViewById(R.id.plate9);
         textViewnous.setVisibility(View.GONE);
-        textViewten = (TextView) findViewById(R.id.plate10);
+        textViewten = findViewById(R.id.plate10);
         textViewten.setVisibility(View.GONE);
-        textViewPlateorPark = (TextView) findViewById(R.id.PackorPlate);
 
-        textView = (Button) findViewById(R.id.Istchosenbutton);
-        textView2nd = (Button) findViewById(R.id.Secondchosenbutton);
-        textView3rd = (Button) findViewById(R.id.Thirdchosenbutton);
-        textView4th = (Button) findViewById(R.id.Fourthchosenbutton);
-        textView5th = (Button) findViewById(R.id.Fifthchosenbutton);
-        textView6th = (Button) findViewById(R.id.Sixthchosenbutton);
-        textView7th = (Button) findViewById(R.id.Seventhchosenbutton);
-        textView8th = (Button) findViewById(R.id.Eightchosenbutton);
-        textView9th = (Button) findViewById(R.id.Ninthchosenbutton);
-        textView10th = (Button) findViewById(R.id.Tenthchosenbutton);
+        textViewPlateorPark = findViewById(R.id.PackorPlate);
+        textViewPlateorPark.setVisibility(View.INVISIBLE);
+
+
 
         Intent PorP = getIntent();
         String receivedvalue = PorP.getStringExtra("Roman");
@@ -213,9 +219,8 @@ public class ServingActivity extends AppCompatActivity {
             textViewPlateorPark.setText("" + "All in Thirty different Plates" + "");
      
 
-        else {
+        else
             textViewPlateorPark.setText("" + "All in a Plate" + "");
-        }
 
 
 

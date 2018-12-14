@@ -4,16 +4,16 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="#8D6E63"
+    android:background="@color/BackgroundFour"
     android:elevation="20dp">
 
     <Button
         android:drawableTop="@drawable/a_purchase"
-        android:layout_width="300dp"
+        android:layout_width="500dp"
         android:layout_height="200dp"
         android:text="@string/purchasebutton_snackmenuFragment4_snackmenuActivity"
         android:paddingTop="40dp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/TextColorTwo_Snack_A"
         android:background="@drawable/a_custom_ripple_borderless"
         android:onClick="ConfirmMyPurchase"
         android:paddingStart="120dp"
@@ -24,12 +24,12 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:layout_width="300dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:text="@string/plate_count_snackmenuFragment4_snackmenuActivityv21"
+        android:text="@string/auto_bio_snackmenuFragment4_snackmenuActivity21"
         android:drawableTop="@drawable/a_platechoose"
-        android:onClick="maxPlateCount"
-        android:textColor="#FFFFFF"
+        android:onClick="autoBio"
+        android:textColor="@color/TextColorTwo_Snack_A"
         android:background="@drawable/a_custom_ripple_borderless"
         android:textSize="20sp"
         android:paddingEnd="120dp"

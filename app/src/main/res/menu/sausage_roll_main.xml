@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/Sausage_Roll">
+        <item android:id="@+id/five_sausage_roll" android:title="500 NAIRA SAUSAGE(5)"/>
+        <item android:id="@+id/six_sausage_roll" android:title="600 NAIRA SAUSAGE(6)"/>
+        <item android:id="@+id/seven_sausage_roll" android:title="700 NAIRA SAUSAGE(7)"/>
+        <item android:id="@+id/eight_sausage_roll" android:title="800 NAIRA SAUSAGE(8)"/>
+        <item android:id="@+id/nine_sausage_roll" android:title="900 NAIRA SAUSAGE(9)"/>
+        <item android:id="@+id/ten_sausage_roll" android:title="1000 NAIRA SAUSAGE(10)"/>
+        <item android:id="@+id/eleven_sausage_roll" android:title="1100 NAIRA SAUSAGE(11)"/>
+        <item android:id="@+id/twelve_sausage_roll" android:title="1200 NAIRA SAUSAGE(12)"/>
+        <item android:id="@+id/thirteen_sausage_roll" android:title="1300 NAIRA SAUSAGE(13)"/>
+        <item android:id="@+id/fourteen_sausage_roll" android:title="1400 NAIRA SAUSAGE(14)"/>
+        <item android:id="@+id/fifteen_sausage_roll" android:title="1500 NAIRA SAUSAGE(15)"/>
+        <item android:id="@+id/sixteen_sausage_roll" android:title="1600 NAIRA SAUSAGE(16)"/>
+        <item android:id="@+id/seventeen_sausage_roll" android:title="1700 NAIRA SAUSAGE(17)"/>
+        <item android:id="@+id/eighteen_sausage_roll" android:title="1800 NAIRA SAUSAGE(18)"/>
+        <item android:id="@+id/nineteen_sausage_roll" android:title="1900 NAIRA SAUSAGE(19)"/>
+        <item android:id="@+id/twenty_sausage_roll" android:title="2000 NAIRA SAUSAGE(20)"/>
+    </group>
+
+</menu>

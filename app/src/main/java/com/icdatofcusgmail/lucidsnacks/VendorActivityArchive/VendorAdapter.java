@@ -117,6 +117,7 @@ class VendorAdapter extends BaseAdapter {
         }
         return olonje;
     }
+
     public void setData(List<Map<String, String>> data) {
         this.data = data;
     }

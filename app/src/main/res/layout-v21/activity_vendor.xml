@@ -5,7 +5,7 @@
     android:id="@+id/activity_vendor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Vendor.Color"
+    android:background="@color/colorCcCent"
     android:focusableInTouchMode="false"
     android:fitsSystemWindows="true"
     tools:context="com.icdatofcusgmail.lucidsnacks.VendorActivityArchive.VendorActivity">
@@ -94,7 +94,8 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_platecount"
+        android:src="@drawable/a_platecount_b"
+        android:visibility="invisible"
         android:onClick="OCDynamicPlateCount"
         android:background="@drawable/oval_dynamicplatecount"
         android:layout_alignBottom="@+id/displayAddorRemoveDialogue"
@@ -117,7 +118,7 @@
 
     <fragment
         android:layout_width="match_parent"
-        android:layout_height="900dp"
+        android:layout_height="1500dp"
         android:name="com.icdatofcusgmail.lucidsnacks.VendorActivityArchive.VendorFragment"
         android:id="@+id/displayAddorRemoveLayout"
         android:layout="@layout/fragment_vendor"
@@ -131,9 +132,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:elevation="4dp"
+        android:background="@drawable/vendoractivity_vendor_idno_background"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:textSize="30sp"
+        android:textColor="@color/VendorIDTextColor"
         android:gravity="center"
         android:text="@string/id_no_display_Vendor_Activity"
         android:layout_above="@+id/itemsState"
