@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -721,7 +722,11 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                         }
                     };
                     MyCountlesston.getmInstance(SnacksmenuActivity.this).addToRequestQueue(LandMarkUniversity);
-
+                    LandMarkUniversity.setRetryPolicy(new DefaultRetryPolicy(
+                            DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                            0, // maxNumRetries =0 means no retry
+                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                    ));
 
 
                     startActivity(intent);
