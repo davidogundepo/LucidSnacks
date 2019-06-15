@@ -703,6 +703,8 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
                             };
 
                             Map<String, String> params = new HashMap<String, String>();
+
+
                             for (String Names : webmail_SnacksNames) {
                                 if (!(Names == null))
                                     params.put("snacks_names", Arrays.toString(webmail_SnacksNames).replace(" ","").replace("null,", "").replace("null", "").replace(",","\n").replace("[","").replace("]",""));

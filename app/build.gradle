@@ -27,16 +27,19 @@ android {
 repositories {
     jcenter()
     maven { url "https://clojars.org/repo/" }
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation files("libs/json-simple-1.1.1.jar")
+    implementation files("libs/easyandroidanimationslibrary-v0.5.jar")
 
    // implementation 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    //implementation 'com.github.2359media:EasyAndroidAnimations:0.8'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.antonionicolaspina:revealtextview:2.0'
     implementation 'com.android.support:design:26.1.0'
@@ -54,7 +57,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.android.volley:volley:1.0.0'
-    implementation 'com.github.2359media:EasyAndroidAnimations:0.8'
+  //  implementation 'com.github.2359media:EasyAndroidAnimations:0.8'
     implementation 'com.luolc:emoji-rain:0.1.1'
     implementation 'com.airbnb.android:lottie:2.1.2'
     testImplementation 'junit:junit:4.12'
