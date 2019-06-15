@@ -131,7 +131,7 @@ public class SnacksmenuActivity extends AppCompatActivity implements MissPublicR
 
     AlertDialog.Builder Lenient;
     Dialog Adamu;
-
+//
     EmojiRainLayout faith;
 
 
