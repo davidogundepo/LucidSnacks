@@ -9,9 +9,12 @@ import android.support.annotation.ColorRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextClock;
@@ -148,7 +151,16 @@ public class Vendor_LoginActivity extends AppCompatActivity {
                                         dialog.dismiss();
                                     }
                                 });
-                                weightBuilder.create().show();
+                                AlertDialog dialog = weightBuilder.create();
+//                                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                                WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+
+                                layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
+                                layoutParams.x = 100;
+                                layoutParams.y = 100;
+                                dialog.show();
+//                                weightBuilder.create().show();
+
                                 error.printStackTrace();
                             } catch (Exception ignored) {
 

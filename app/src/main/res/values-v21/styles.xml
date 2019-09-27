@@ -25,7 +25,7 @@
         <item name="android:colorPrimary">@color/colorUniversity</item>
         <item name="android:colorPrimaryDark">@color/colorUniversityDark</item>
         <item name="colorAccent">@color/colorEcCent</item>
-        <item name="android:textColor">@color/VendorLoginName.BackgroundOne</item>
+        <item name="android:textColor">@color/VendorLoginNameBackgroundOne</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
         <item name="android:textColorPrimary">@color/colorUniversity</item>
         <item name="android:textColorSecondary">@color/VendorLoginToolbarIconColor</item>
@@ -43,7 +43,7 @@
         <item name="android:colorPrimaryDark">@color/colorSecondaryDark</item>
         <item name="android:colorAccent">@color/colorCcCentTwo</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
-        <item name="android:textColor">@color/Vendor.Color</item>
+        <item name="android:textColor">@color/VendorColor</item>
         <item name="android:textColorPrimary">@color/colorCcCent</item>
         <item name="android:textColorSecondary">@color/VendorToolbarIconColor</item>
         <item name="android:actionOverflowButtonStyle">@style/VendorActivity.Overflow</item>
@@ -57,7 +57,7 @@
         <item name="android:colorPrimary">@color/colorUniversity</item>
         <item name="android:colorPrimaryDark">@color/colorUniversityDark</item>
         <item name="android:colorAccent">@color/colorEcCent</item>
-        <item name="android:textColor">@color/VendorLoginName.BackgroundOne</item>
+        <item name="android:textColor">@color/VendorLoginNameBackgroundOne</item>
         <item name="android:navigationBarColor">@color/EachActivityNavigationBar</item>
         <item name="android:textColorPrimary">@color/colorUniversity</item>
     </style>

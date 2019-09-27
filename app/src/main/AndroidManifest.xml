@@ -19,6 +19,7 @@
         android:xlargeScreens="true" />
 
     <application
+        android:hardwareAccelerated="true"
         android:name=".LucidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,12 +35,14 @@
             android:theme="@style/Vendor_LoginActivity"
             android:screenOrientation="reversePortrait">
 
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".VendorActivityArchive.VendorActivity"
@@ -49,13 +52,30 @@
             android:screenOrientation="reversePortrait"
             android:theme="@style/VendorActivity">
 
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<action android:name="android.intent.action.VIEW"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
 
         </activity>
         <activity
             android:name=".LoginActivityArchive.LoginActivity"
             android:theme="@style/LoginActivity"
             android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<action android:name="android.intent.action.VIEW"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
         <activity
             android:name=".SnacksActivityArchive.SnacksmenuActivity"
             android:theme="@style/SnacksmenuActivity"

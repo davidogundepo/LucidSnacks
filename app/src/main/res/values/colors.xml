@@ -9,13 +9,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#4B5CB9</color>
     <color name="colorAccent">#607D8B</color>
-
-    E1BEE7
     <!-- VendorLoginActivity Only -->
 
     <color name="VendorLoginToolbarIconColor">#000000</color>
-    <color name="VendorLoginName.BackgroundOne">#2E7D32</color>
-    <color name="VendorLoginName.BackgroundTwo">#81C784</color>
+    <color name="VendorLoginNameBackgroundOne">#2E7D32</color>
+    <color name="VendorLoginNameBackgroundTwo">#81C784</color>
     <color name="TimeWatcher">#2E7D32</color>
     <color name="colorUniversity">#5D4037</color>
     <color name="EditTextColor">#CFD8DC</color>
@@ -23,7 +21,7 @@
     <color name="colorEcCent">#2E7D32</color>
     <color name="AccessButtonTextColor">#FFFFFF</color>
     <color name="HelloAmazing">#FFFFFF</color>
-    <color name="AccessButtonBackgroundColor">#4CAF50</color>
+    <color name="AccessButtonBackgroundColor">#1A685F</color>
     <color name="ActionBarButtonMenuColor">#43A047</color>
     <color name="AccessButtonBackgroundStrokeColor">#B0BEC5</color>
     <color name="ConfirmIDColor">#B0BEC5</color>
@@ -34,8 +32,8 @@
     <color name="colorSecondaryDark">#FFEE58</color>
     <color name="colorCcCent">#455A64</color>
     <color name="colorCcCentTwo">#00897B</color>
-    <color name="Vendor.Color">#FF8A65</color>
-    <color name="Vendor.Kolor">#607D8B</color>
+    <color name="VendorColor">#FF8A65</color>
+    <color name="VendorKolor">#607D8B</color>
     <color name="VendorIDTextColor">#FFF176</color>
     <color name="AddOrRemoveButtonTextColor">#FF8A65</color>
     <color name="DoneButtonTextColor">#FF8A65</color>
@@ -44,9 +42,9 @@
     <!-- LoginActivity Only -->
     <color name="LoginToolbarIconColor">#FFFFFF</color>
     <color name="LoginButtonColor">#2979FF</color>
-    <color name="LoginColor.Title">#FFFFFF</color>
-    <color name="LoginColor.Access">#FFFFFF</color>
-    <color name="Login.Color">#278E68</color>
+    <color name="LoginColorTitle">#FFFFFF</color>
+    <color name="LoginColorAccess">#FFFFFF</color>
+    <color name="LoginColor">#278E68</color>
     <color name="EditTextColorLogin">#CFD8DC</color>
     <color name="ConfirmIDColorLogin">#B0BEC5</color>
     <color name="EditTextStatus">#FFFFFF</color>

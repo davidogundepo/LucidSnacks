@@ -12,7 +12,7 @@
                 android:gradientRadius="90" />
 
             <stroke
-                android:color="@color/Vendor.Color"
+                android:color="@color/VendorColor"
                 android:width="2dp" />
             <corners
                 android:radius="25dp" />

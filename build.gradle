@@ -17,6 +17,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/shodgson/uareu4500reader' }
        // maven {url "https://jitpack.io"}
     }
 }

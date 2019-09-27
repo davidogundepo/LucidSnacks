@@ -356,10 +356,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "One Plate per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    //  Engr. Adeleke contributed to the purchase of the prototype device I work on
+                    StyleableToast EngrAdeleke = new StyleableToast(getApplicationContext(), "One Plate per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    EngrAdeleke.setBackgroundColor(Color.parseColor("#607D8B"));
+                    EngrAdeleke.setTextColor(Color.YELLOW);
+                    EngrAdeleke.show();
                 }
                 else if (twook.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -372,10 +373,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Two plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Dr. Agbede, contributed to the purchase of my device
+                    StyleableToast SamuelAgbede = new StyleableToast(getApplicationContext(), "Two plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    SamuelAgbede.setBackgroundColor(Color.parseColor("#607D8B"));
+                    SamuelAgbede.setTextColor(Color.YELLOW);
+                    SamuelAgbede.show();
                 }
                 else if (threeok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -388,10 +390,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Three plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Joshua Akinola contributed to the purchase of my screen
+                    StyleableToast ControlT = new StyleableToast(getApplicationContext(), "Three plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    ControlT.setBackgroundColor(Color.parseColor("#607D8B"));
+                    ControlT.setTextColor(Color.YELLOW);
+                    ControlT.show();
                 }
                 else if (fourok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -404,10 +407,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Four plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Tobi contributed to the purchase of my screen
+                    StyleableToast OlamijuloTobi = new StyleableToast(getApplicationContext(), "Four plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    OlamijuloTobi.setBackgroundColor(Color.parseColor("#607D8B"));
+                    OlamijuloTobi.setTextColor(Color.YELLOW);
+                    OlamijuloTobi.show();
                 }
                 else if (fiveok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -420,10 +424,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Five plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Bayo contributed to the purchase of my screen
+                    StyleableToast BasorunBayo = new StyleableToast(getApplicationContext(), "Five plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    BasorunBayo.setBackgroundColor(Color.parseColor("#607D8B"));
+                    BasorunBayo.setTextColor(Color.YELLOW);
+                    BasorunBayo.show();
                 }
                 else if (sixok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -436,10 +441,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Six plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Engr. Korede contributed to the purchase of my screen
+                    StyleableToast KoredeAkintayo = new StyleableToast(getApplicationContext(), "Six plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    KoredeAkintayo.setBackgroundColor(Color.parseColor("#607D8B"));
+                    KoredeAkintayo.setTextColor(Color.YELLOW);
+                    KoredeAkintayo.show();
                 }
                 else if (sevenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -452,10 +458,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Seven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Keziah contributed to the purchase of my screen
+                    StyleableToast OlaniyiKeziah = new StyleableToast(getApplicationContext(), "Seven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    OlaniyiKeziah.setBackgroundColor(Color.parseColor("#607D8B"));
+                    OlaniyiKeziah.setTextColor(Color.YELLOW);
+                    OlaniyiKeziah.show();
                 }
                 else if (eightok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -468,10 +475,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Eight plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Falaju Emmanuel contributed to the purchase of my screen
+                    StyleableToast FalajuHilex = new StyleableToast(getApplicationContext(), "Eight plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    FalajuHilex.setBackgroundColor(Color.parseColor("#607D8B"));
+                    FalajuHilex.setTextColor(Color.YELLOW);
+                    FalajuHilex.show();
                 }
                 else if (nineok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -484,10 +492,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Nine plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Aunty Mercy contributed to the purchase of my screen
+                    StyleableToast AuntyMercy = new StyleableToast(getApplicationContext(), "Nine plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    AuntyMercy.setBackgroundColor(Color.parseColor("#607D8B"));
+                    AuntyMercy.setTextColor(Color.YELLOW);
+                    AuntyMercy.show();
                 }
                 else if (tenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -500,10 +509,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Ten plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Bro. Tolu contributed to the purchase of my screen
+                    StyleableToast AdemisoyeTolu = new StyleableToast(getApplicationContext(), "Ten plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    AdemisoyeTolu.setBackgroundColor(Color.parseColor("#607D8B"));
+                    AdemisoyeTolu.setTextColor(Color.YELLOW);
+                    AdemisoyeTolu.show();
                 }
                 else if (elevenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -516,10 +526,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Eleven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Joseph contributed to the purchase of my screen
+                    StyleableToast JosephUshie = new StyleableToast(getApplicationContext(), "Eleven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    JosephUshie.setBackgroundColor(Color.parseColor("#607D8B"));
+                    JosephUshie.setTextColor(Color.YELLOW);
+                    JosephUshie.show();
                 }
                 else if (twelveok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -532,10 +543,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twelve plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Bishop contributed to the purchase of my screen
+                    StyleableToast ZebulonBishop = new StyleableToast(getApplicationContext(), "Twelve plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    ZebulonBishop.setBackgroundColor(Color.parseColor("#607D8B"));
+                    ZebulonBishop.setTextColor(Color.YELLOW);
+                    ZebulonBishop.show();
                 }
                 else if (thirteenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -548,10 +560,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Thirteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Demi contributed to the purchase of my screen
+                    StyleableToast OniretiDemi = new StyleableToast(getApplicationContext(), "Thirteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    OniretiDemi.setBackgroundColor(Color.parseColor("#607D8B"));
+                    OniretiDemi.setTextColor(Color.YELLOW);
+                    OniretiDemi.show();
                 }
                 else if (fourteenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -564,10 +577,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Fourteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+//                    Ifiok contributed to the purchase of my device
+                    StyleableToast EssienIfiok = new StyleableToast(getApplicationContext(), "Fourteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    EssienIfiok.setBackgroundColor(Color.parseColor("#607D8B"));
+                    EssienIfiok.setTextColor(Color.YELLOW);
+                    EssienIfiok.show();
                 }
                 else if (fifteenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -580,10 +594,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Fifteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Victor contributed to the purchase of my screen
+                    StyleableToast AkhamereVictor = new StyleableToast(getApplicationContext(), "Fifteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    AkhamereVictor.setBackgroundColor(Color.parseColor("#607D8B"));
+                    AkhamereVictor.setTextColor(Color.YELLOW);
+                    AkhamereVictor.show();
                 }
                 else if (sixteenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -596,10 +611,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Sixteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Chukwunanchi contributed to the purchase of my screen
+                    StyleableToast ChukwunanchiEjioba = new StyleableToast(getApplicationContext(), "Sixteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    ChukwunanchiEjioba.setBackgroundColor(Color.parseColor("#607D8B"));
+                    ChukwunanchiEjioba.setTextColor(Color.YELLOW);
+                    ChukwunanchiEjioba.show();
                 }
                 else if (seventeenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -612,10 +628,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Seventeen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Adamu contributed to the purchase of my device
+                    StyleableToast MattewAuta = new StyleableToast(getApplicationContext(), "Seventeen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    MattewAuta.setBackgroundColor(Color.parseColor("#607D8B"));
+                    MattewAuta.setTextColor(Color.YELLOW);
+                    MattewAuta.show();
                 }
                 else if (eighteenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -628,10 +645,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Eighteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Engr. Kenny contributed to the purchase of my device
+                    StyleableToast EngrKenny = new StyleableToast(getApplicationContext(), "Eighteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    EngrKenny.setBackgroundColor(Color.parseColor("#607D8B"));
+                    EngrKenny.setTextColor(Color.YELLOW);
+                    EngrKenny.show();
                 }
                 else if (nineteenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -644,10 +662,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Nineteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Pipe contributed to the purchase of my device
+                    StyleableToast AjibadePipe = new StyleableToast(getApplicationContext(), "Nineteen plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    AjibadePipe.setBackgroundColor(Color.parseColor("#607D8B"));
+                    AjibadePipe.setTextColor(Color.YELLOW);
+                    AjibadePipe.show();
                 }
                 else if (twentyok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -660,10 +679,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twenty plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Engr. Ayideji contributed to the purchase of my screen
+                    StyleableToast EngrAyideji = new StyleableToast(getApplicationContext(), "Twenty plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    EngrAyideji.setBackgroundColor(Color.parseColor("#607D8B"));
+                    EngrAyideji.setTextColor(Color.YELLOW);
+                    EngrAyideji.show();
                 }
                 else if (twentyoneok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -676,10 +696,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyone plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Tobi contributed to the purchase of my screen
+                    StyleableToast OgunjemilusiTobi = new StyleableToast(getApplicationContext(), "Twentyone plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    OgunjemilusiTobi.setBackgroundColor(Color.parseColor("#607D8B"));
+                    OgunjemilusiTobi.setTextColor(Color.YELLOW);
+                    OgunjemilusiTobi.show();
                 }
                 else if (twentytwook.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -692,10 +713,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentytwo plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Funk contributed to the purchase of my screen
+                    StyleableToast SanusiFunke = new StyleableToast(getApplicationContext(), "Twentytwo plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    SanusiFunke.setBackgroundColor(Color.parseColor("#607D8B"));
+                    SanusiFunke.setTextColor(Color.YELLOW);
+                    SanusiFunke.show();
                 }
                 else if (twentythreeok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -708,10 +730,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentythree plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Engr. Samson contributed to the purchase of my screen
+                    StyleableToast SalawuSamson = new StyleableToast(getApplicationContext(), "Twentythree plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    SalawuSamson.setBackgroundColor(Color.parseColor("#607D8B"));
+                    SalawuSamson.setTextColor(Color.YELLOW);
+                    SalawuSamson.show();
                 }
                 else if (twentyfourok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -724,10 +747,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyfour plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Segun contributed to the purchase of my screen
+                    StyleableToast SegunOlaiya = new StyleableToast(getApplicationContext(), "Twentyfour plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    SegunOlaiya.setBackgroundColor(Color.parseColor("#607D8B"));
+                    SegunOlaiya.setTextColor(Color.YELLOW);
+                    SegunOlaiya.show();
                 }
                 else if (twentyfiveok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -740,10 +764,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyfive plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Joshua contributed to the purchase of my screen
+                    StyleableToast Hermans = new StyleableToast(getApplicationContext(), "Twentyfive plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    Hermans.setBackgroundColor(Color.parseColor("#607D8B"));
+                    Hermans.setTextColor(Color.YELLOW);
+                    Hermans.show();
                 }
                 else if (twentysixok.isChecked()) {
 
@@ -757,10 +782,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentysix plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Dr. Yomade contributed to the purchase of my screen
+                    StyleableToast OwolabiYomade = new StyleableToast(getApplicationContext(), "Twentysix plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    OwolabiYomade.setBackgroundColor(Color.parseColor("#607D8B"));
+                    OwolabiYomade.setTextColor(Color.YELLOW);
+                    OwolabiYomade.show();
                 }
                 else if (twentysevenok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -773,10 +799,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyseven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+//                    Engr. Oshodi contributed to the purchase of my screen
+                    StyleableToast EngrOshodi = new StyleableToast(getApplicationContext(), "Twentyseven plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    EngrOshodi.setBackgroundColor(Color.parseColor("#607D8B"));
+                    EngrOshodi.setTextColor(Color.YELLOW);
+                    EngrOshodi.show();
                 }
                 else if (twentyeightok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -789,10 +816,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentyeight plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Godwin contributed to the purchase of my screen
+                    StyleableToast IgbosuahGodwin = new StyleableToast(getApplicationContext(), "Twentyeight plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    IgbosuahGodwin.setBackgroundColor(Color.parseColor("#607D8B"));
+                    IgbosuahGodwin.setTextColor(Color.YELLOW);
+                    IgbosuahGodwin.show();
                 }
                 else if (twentynineok.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -805,10 +833,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Twentynine plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+//                    Mr. Ola contributed to the purchase of my screen
+                    StyleableToast RidwanOla = new StyleableToast(getApplicationContext(), "Twentynine plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    RidwanOla.setBackgroundColor(Color.parseColor("#607D8B"));
+                    RidwanOla.setTextColor(Color.YELLOW);
+                    RidwanOla.show();
                 }
                 else if (thirtyisenoughjoor.isChecked()) {
                     PassDataAlso.setOnClickListener(new View.OnClickListener() {
@@ -821,10 +850,11 @@ public class VendorActivity extends AppCompatActivity implements AdapterView.OnI
                             startActivity(intent);
                         }
                     });
-                    StyleableToast APlateNoSelected = new StyleableToast(getApplicationContext(), "Thirty plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
-                    APlateNoSelected.setBackgroundColor(Color.parseColor("#607D8B"));
-                    APlateNoSelected.setTextColor(Color.YELLOW);
-                    APlateNoSelected.show();
+                    // Prof. TF contributed to the purchase of my screen
+                    StyleableToast AdepojuTF = new StyleableToast(getApplicationContext(), "Thirty plates per deal picked", Toast.LENGTH_SHORT).spinIcon();
+                    AdepojuTF.setBackgroundColor(Color.parseColor("#607D8B"));
+                    AdepojuTF.setTextColor(Color.YELLOW);
+                    AdepojuTF.show();
                 }
             }
         });

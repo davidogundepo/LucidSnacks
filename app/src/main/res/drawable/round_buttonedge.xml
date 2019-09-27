@@ -12,7 +12,7 @@
                 android:gradientRadius="90"/>
 
             <!-- apply a border around button-->
-            <stroke android:color="@color/Vendor.Color"
+            <stroke android:color="@color/VendorColor"
                 android:width="2dp" />
             <!-- make the button corners rounded -->
             <corners android:radius="25dp" />

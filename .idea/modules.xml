@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LucidSnacks.iml" filepath="$PROJECT_DIR$/LucidSnacks.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sourceafis/sourceafis.iml" filepath="$PROJECT_DIR$/sourceafis/sourceafis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sourceafis-debug/sourceafis-debug.iml" filepath="$PROJECT_DIR$/sourceafis-debug/sourceafis-debug.iml" />
     </modules>
   </component>
 </project>

@@ -5,7 +5,7 @@
     android:id="@+id/activity_vendor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Vendor.Color"
+    android:background="@color/VendorColor"
     android:focusableInTouchMode="false"
     android:fitsSystemWindows="true"
     tools:context="com.icdatofcusgmail.lucidsnacks.VendorActivityArchive.VendorActivity">

@@ -20,7 +20,7 @@
     </style>
 
     <style name="LoginActivity" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:navigationBarColor">@color/LoginColor.Title</item>
+        <item name="android:navigationBarColor">@color/LoginColorTitle</item>
     </style>
 
     <style name="SnacksmenuActivity" parent="Theme.AppCompat.Light.NoActionBar">

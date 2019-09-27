@@ -21,12 +21,12 @@
             app:borderColor="@color/colorCcCent"
             app:duration="500"
             android:id="@+id/smoothie"
-            app:tickColor="@color/Vendor.Kolor"
+            app:tickColor="@color/VendorKolor"
             app:tickWidth="4dp"
-            app:trimColor="@color/Vendor.Color" />
+            app:trimColor="@color/VendorColor" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            app:civ_border_color="@color/Vendor.Color"
+            app:civ_border_color="@color/VendorColor"
             app:civ_border_width="2dp"
             android:layout_width="130dp"
             android:layout_height="130dp"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/TextViewname_Gridview_VendorActivity"
-        android:textColor="@color/Vendor.Color"
+        android:textColor="@color/VendorColor"
         android:gravity="center"
         android:id="@+id/textmodel"
         android:textAlignment="center"
